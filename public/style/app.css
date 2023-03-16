@@ -1,0 +1,60 @@
+/* -------------- Cabeçalho ---------------- */
+header {
+    /*----colocar linha preta na parte de cima do header----*/
+    background-color: #8b7f82;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+    margin-left: 90px;
+    font-size: 38px;
+    font-weight: normal;
+}
+
+/* ------------------- Login ------------------ */
+form {
+    margin: 0 auto;
+    margin-top: 20em;
+    width: 300px;
+    padding: 20px;
+}
+
+label {
+    font-size: larger;
+    /*background-color: #8b7f82;*/
+    display: block;
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #8b7f82;
+}
+
+/* ------------------ Botão -------------------- */
+input[type="submit"] {
+    background-color: #7ee24f;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10em;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/*--------------Img------------------*/
+/*figure {
+
+}
