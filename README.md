@@ -30,6 +30,14 @@ Desenolvimento de Sistemas, do Centro Universitário UNIFTEC
   * o acesso ficará disponíel pelar url
   * `http://localhost:8000`
 
+### Migrações: Banco de dados
+* Após os passo acima, para criação das tabelas do banco de dados.
+  * Acessar a raiz do projeto e rodas a seguinte instrução
+    * `php artisan migrate`
+  * Assim ele irá criar as tabelas no SGDB
+  * Para reverter as tabelas é so rodar a instrução
+    * php `artisan migrate:rollback`
+
 ### Algumas informações adicionais
 * A pasta raiz do seu projeto é chamado de `/`
 * O arquivo `.env` não é submetido, e deve ser criado para configurar as suas variáveis
