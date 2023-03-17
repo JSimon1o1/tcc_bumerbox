@@ -1,0 +1,10 @@
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>cpf</th>
+    </thead>
+    <tbody>
+        <td>Fulano</td>
+        <td>0931292030</td>
+    </tbody>
+</table>

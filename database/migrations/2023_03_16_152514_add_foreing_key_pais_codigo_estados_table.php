@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('cidades', function (Blueprint $table) {
-            $table->unsignedBigInteger('estado_id')->after('id');
-            $table->foreign('estado_id')->references('id')->on('estados');
+        Schema::table('estados', function (Blueprint $table) {
+            $table->string('pais_codigo')->after('id');
+            $table->foreign('pais_codigo')->references('codigo')->on('paises');
         });
     }
 
@@ -22,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('cidades', function (Blueprint $table) {
-            $table->dropForeign('cidades_estado_id_foreign');
-            $table->dropColumn('estado_id');
+        Schema::table('estados', function (Blueprint $table) {
+            $table->dropForeign('estados_pais_codigo_foreign');
+            $table->dropColumn('pais_codigo');
         });
     }
 };
