@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('paises', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 200);
+            $table->string('codigo', 10)->unique();
             $table->unsignedInteger('created_by')->default(1);
             $table->timestamp('created_at')->default(now());
         });
