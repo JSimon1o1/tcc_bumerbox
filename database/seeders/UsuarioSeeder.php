@@ -9,8 +9,7 @@ use Illuminate\Database\Seeder;
 class UsuarioSeeder extends Seeder
 {
     private static array $administradores = [
-        ['nome' => 'Bumerbox', 'sobrenome' => 'Admin', 'data_nascimento' => '2023-03-01', 'cpfcnpj' => '101010', 'senha' => ''],
-        ['nome' => 'Bumerbox', 'sobrenome' => 'Robot', 'data_nascimento' => '2023-03-01', 'cpfcnpj' => '1001001', 'senha' => ''],
+        ['nome' => 'Administrador', 'sobrenome' => 'Sistema', 'data_nascimento' => '2023-03-01', 'cpfcnpj' => '101010', 'senha' => ''],
     ];
 
     private function create($dados): UsuarioSeeder

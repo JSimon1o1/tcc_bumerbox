@@ -9,8 +9,7 @@ use Illuminate\Database\Seeder;
 class PerfilSeeder extends Seeder
 {
     private static array $perfil = [
-        ['usuario_id' => 1, 'tipo_perfil_codigo' => 'ADM'],
-        ['usuario_id' => 2, 'tipo_perfil_codigo' => 'SYS'],
+        ['usuario_id' => 1, 'tipo_perfil_codigo' => 'SYS'],
     ];
 
     private function create($dados): PerfilSeeder
