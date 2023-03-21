@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\AuditionUsers;
 use Illuminate\Database\Eloquent\Model;
 
 class Estado extends Model
 {
+    use AuditionUsers;
+
     protected $primaryKey = 'id';
     protected $table = 'estados';
     public $timestamps = false;

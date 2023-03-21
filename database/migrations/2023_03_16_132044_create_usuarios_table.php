@@ -12,16 +12,18 @@ return new class extends Migration {
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 200);
+            $table->string('nome');
+            $table->string('sobrenome');
             $table->date('data_nascimento');
-            $table->unsignedInteger('cpfcnpj');
+            $table->unsignedInteger('cpfcnpj')->unique();
             $table->string('senha', 20);
             $table->boolean('fidelizado')->default(false);
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
-            $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
+            $table->boolean('visivel')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 200);
             $table->string('codigo', 10)->unique();
-            $table->unsignedInteger('created_by')->default(1);
             $table->timestamp('created_at')->default(now());
+            $table->unsignedInteger('created_by')->default(1);
         });
     }
 

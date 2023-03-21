@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('fidelizacoes', function (Blueprint $table) {
             $table->id();
             $table->unsignedDouble('valor_receber')->nullable();
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
-            $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 

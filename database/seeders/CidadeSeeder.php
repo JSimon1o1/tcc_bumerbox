@@ -8,28 +8,28 @@ use Illuminate\Database\Seeder;
 
 class CidadeSeeder extends Seeder
 {
-    private static array $cidades_rs = [
+    private static array $cidadesRS = [
         ['nome' => 'Bento Gonçalves', 'estado_codigo' => 'BR-RS'],
         ['nome' => 'Caxias do Sul', 'estado_codigo' => 'BR-RS'],
         ['nome' => 'Porto Alegre', 'estado_codigo' => 'BR-RS'],
         ['nome' => 'São Leopoldo', 'estado_codigo' => 'BR-RS'],
     ];
 
-    private static array $cidades_sc = [
+    private static array $cidadesSC = [
         ['nome' => 'Balneário Camboriú', 'estado_codigo' => 'BR-SC'],
         ['nome' => 'Garopaba', 'estado_codigo' => 'BR-SC'],
         ['nome' => 'Laguna', 'estado_codigo' => 'BR-SC'],
         ['nome' => 'Tubarão', 'estado_codigo' => 'BR-SC'],
     ];
 
-    private static array $cidades_sp = [
+    private static array $cidadesSP = [
         ['nome' => 'Campinas', 'estado_codigo' => 'BR-SP'],
         ['nome' => 'Guarulhos', 'estado_codigo' => 'BR-SP'],
         ['nome' => 'Osasco', 'estado_codigo' => 'BR-SP'],
         ['nome' => 'Sorocaba', 'estado_codigo' => 'BR-SP'],
     ];
 
-    private static array $cidades_ar_b = [
+    private static array $cidadesARB = [
         ['nome' => 'Adolfo Alsina', 'estado_codigo' => 'AR-B'],
         ['nome' => 'Lanús', 'estado_codigo' => 'AR-B'],
         ['nome' => 'Marco Paz', 'estado_codigo' => 'AR-B'],
@@ -37,7 +37,7 @@ class CidadeSeeder extends Seeder
         ['nome' => 'Tigre', 'estado_codigo' => 'AR-B'],
     ];
 
-    private static array $cidades_ar_x = [
+    private static array $cidadesARX = [
         ['nome' => 'Marcos Juérez', 'estado_codigo' => 'AR-X'],
         ['nome' => 'Minas', 'estado_codigo' => 'AR-X'],
         ['nome' => 'Río Primero', 'estado_codigo' => 'AR-X'],
@@ -45,25 +45,25 @@ class CidadeSeeder extends Seeder
         ['nome' => 'Totoral', 'estado_codigo' => 'AR-X'],
     ];
 
-    private static array $cidades_ar_s = [
+    private static array $cidadesARS = [
         ['nome' => 'Belgrano', 'estado_codigo' => 'AR-X'],
         ['nome' => 'Las Colinas', 'estado_codigo' => 'AR-X'],
         ['nome' => 'San Lorenzo', 'estado_codigo' => 'AR-X'],
         ['nome' => 'San Martin', 'estado_codigo' => 'AR-X'],
     ];
 
-    private static array $cidades_uy_ar = [
+    private static array $cidadesUYAR = [
         ['nome' => 'Colina Palma', 'estado_codigo' => 'UY-AR'],
         ['nome' => 'Diego Lamas', 'estado_codigo' => 'UY-AR'],
         ['nome' => 'Javier de Viana', 'estado_codigo' => 'UY-AR'],
         ['nome' => 'Siqueira', 'estado_codigo' => 'UY-AR'],
     ];
 
-    private static array $cidades_uy_mo = [
+    private static array $cidadesUYMO = [
         ['nome' => 'Montevidéu', 'estado_codigo' => 'UY-MO'],
     ];
 
-    private static array $cidades_uy_sj = [
+    private static array $cidadesUYSJ = [
         ['nome' => 'Boca del Cufré', 'estado_codigo' => 'UY-SJ'],
         ['nome' => 'González', 'estado_codigo' => 'UY-SJ'],
         ['nome' => 'Juan Soler', 'estado_codigo' => 'UY-SJ'],
@@ -81,7 +81,7 @@ class CidadeSeeder extends Seeder
             $cidadeModel->fill($dados)->save();
         } catch (Exception $e) {
             $this->command->error($e->getMessage());
-            $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($cidadeModel)));
+            $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($this)));
         }
         return $this;
     }
@@ -92,15 +92,15 @@ class CidadeSeeder extends Seeder
     public function run(): void
     {
         $cidades = array_merge(
-            self::$cidades_rs,
-            self::$cidades_sc,
-            self::$cidades_sp,
-            self::$cidades_ar_b,
-            self::$cidades_ar_x,
-            self::$cidades_ar_s,
-            self::$cidades_uy_ar,
-            self::$cidades_uy_mo,
-            self::$cidades_uy_sj
+            self::$cidadesRS,
+            self::$cidadesSC,
+            self::$cidadesSP,
+            self::$cidadesARB,
+            self::$cidadesARX,
+            self::$cidadesARS,
+            self::$cidadesUYAR,
+            self::$cidadesUYMO,
+            self::$cidadesUYSJ
         );
 
         foreach ($cidades as $cidade) {

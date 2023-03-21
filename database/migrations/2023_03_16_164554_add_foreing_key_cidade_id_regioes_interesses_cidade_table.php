@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('regioes_interesses_cidades', function (Blueprint $table) {
+        Schema::table('regioes_interesse_cidade', function (Blueprint $table) {
             $table->unsignedBigInteger('cidade_id')->after('id');
             $table->foreign('cidade_id')->references('id')->on('cidades');
         });
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('regioes_interesses_cidades', function (Blueprint $table) {
-            $table->dropForeign('regioes_interesses_cidades_cidade_id_foreign');
+        Schema::table('regioes_interesse_cidade', function (Blueprint $table) {
+            $table->dropForeign('regioes_interesse_cidade_cidade_id_foreign');
             $table->dropColumn('cidade_id');
         });
     }
