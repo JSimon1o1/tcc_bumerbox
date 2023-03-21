@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('cidades', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 255);
-            $table->unsignedInteger('created_by')->default(1);
             $table->timestamp('created_at')->default(now());
+            $table->unsignedInteger('created_by')->default(1);
         });
     }
 

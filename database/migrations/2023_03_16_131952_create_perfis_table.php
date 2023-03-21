@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('perfis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
-            $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 

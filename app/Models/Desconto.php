@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\AuditionUsers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Desconto extends Model
 {
+    use SoftDeletes, AuditionUsers;
+
     protected $primaryKey = 'id';
     protected $table = 'descontos';
 }

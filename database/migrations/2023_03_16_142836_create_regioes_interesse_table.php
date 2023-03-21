@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('regioes_interesses_cidades', function (Blueprint $table) {
+        Schema::create('regioes_interesse', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
-            $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
+            $table->string('nome', 255);
             $table->timestamps();
+            $table->softDeletes();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('regioes_interesses_cidades');
+        Schema::dropIfExists('regioes_interesse');
     }
 };

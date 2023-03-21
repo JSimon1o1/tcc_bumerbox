@@ -24,7 +24,7 @@ class PaisSeeder extends Seeder
             $paisModel->fill($dados)->save();
         } catch (Exception $e) {
             $this->command->error($e->getMessage());
-            $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($paisModel)));
+            $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($this)));
         }
         return $this;
     }

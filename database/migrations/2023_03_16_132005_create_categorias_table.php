@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 200);
             $table->unsignedDecimal('desconto')->nullable();
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
-            $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 

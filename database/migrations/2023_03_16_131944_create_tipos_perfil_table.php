@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_perfis', function (Blueprint $table) {
+        Schema::create('tipos_perfil', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
-            $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
+            $table->string('codigo', 3)->unique();
+            $table->boolean('visivel')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_perfis');
+        Schema::dropIfExists('tipos_perfil');
     }
 };

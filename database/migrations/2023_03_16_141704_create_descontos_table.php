@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('descontos', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
+            $table->softDeletes();
             $table->unsignedInteger('quantidade');
             $table->unsignedDouble('valor');
             $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('modified_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
             $table->unsignedInteger('deleted_by')->nullable();
-            $table->softDeletes();
-            $table->timestamps();
         });
     }
 
