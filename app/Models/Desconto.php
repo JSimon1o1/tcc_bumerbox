@@ -12,4 +12,5 @@ class Desconto extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'descontos';
+    protected $fillable = ['fidelizacao_id', 'quantidade', 'valor'];
 }

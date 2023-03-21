@@ -12,4 +12,5 @@ class Fidelizacao extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'fidelizacoes';
+    protected $fillable = ['categoria_id', 'usuario_id', 'valor_receber'];
 }

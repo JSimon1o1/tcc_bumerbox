@@ -12,4 +12,5 @@ class Perfil extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'perfis';
+    protected $fillable = ['usuario_id', 'tipo_perfil_codigo'];
 }

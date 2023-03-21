@@ -12,4 +12,5 @@ class RegiaoInteresse extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'regioes_interesse';
+    protected $fillable = ['nome'];
 }

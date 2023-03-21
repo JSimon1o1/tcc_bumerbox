@@ -12,4 +12,5 @@ class Pais extends Model
     protected $primaryKey = 'id';
     protected $table = 'paises';
     public $timestamps = false;
+    protected $fillable = ['nome', 'codigo'];
 }
