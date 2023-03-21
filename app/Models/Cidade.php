@@ -12,4 +12,5 @@ class Cidade extends Model
     protected $primaryKey = 'id';
     protected $table = 'cidades';
     public $timestamps = false;
+    protected $fillable = ['estado_codigo', 'nome'];
 }

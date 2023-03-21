@@ -12,4 +12,5 @@ class TipoPerfil extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'tipos_perfil';
+    protected $fillable = ['nome', 'codigo', 'visivel'];
 }

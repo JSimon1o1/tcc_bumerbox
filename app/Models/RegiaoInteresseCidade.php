@@ -12,4 +12,5 @@ class RegiaoInteresseCidade extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'regioes_interesse_cidade';
+    protected $fillable = ['regiao_interesse_id', 'cidade_id'];
 }

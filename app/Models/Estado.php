@@ -12,4 +12,5 @@ class Estado extends Model
     protected $primaryKey = 'id';
     protected $table = 'estados';
     public $timestamps = false;
+    protected $fillable = ['pais_codigo', 'nome', 'codigo'];
 }
