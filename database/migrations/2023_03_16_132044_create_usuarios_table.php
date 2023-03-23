@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nome');
             $table->string('sobrenome');
-            $table->date('data_nascimento');
+            $table->date('data_nascimento')->nullable();
             $table->unsignedInteger('cpfcnpj')->unique();
             $table->string('senha', 20);
             $table->boolean('fidelizado')->default(false);

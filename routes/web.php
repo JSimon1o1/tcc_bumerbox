@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('autenticacao.login');
 });
 
+Route::get('/registro', function () {
+    return view('autenticacao.registro');
+});
+
 Route::get('/acesso', function () {
     return view('layout.base');
 });
