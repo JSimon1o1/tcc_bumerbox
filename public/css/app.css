@@ -196,18 +196,17 @@ input[type="submit"]:hover {
 }
 
 /*------------------------- PÁGINA -----------------------------------*/
-main form {
-    margin-left: 90em;
-    display: flex;
-    flex-direction: column;
-}
+/*main form {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-main button {
-    margin-left: 18em;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-}
+/*main button {*/
+/*    margin-left: 18em;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-self: center;*/
+/*}*/
 
 .container-entrar {
     display: grid;
@@ -233,10 +232,11 @@ main button {
 }
 
 .container-homepage {
+    width: 600px;
+    position: relative;
+    margin: 15px auto;
+    /*margin-top: 100px;*/
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-bottom: solid 1px #967C4A;
-    margin-top: 350px;
-    margin-left: 25%;
-    width: 600px;
 }
