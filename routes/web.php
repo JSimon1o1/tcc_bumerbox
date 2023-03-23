@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/acesso', function () {
     return view('layout.base');
 });
+
+Route::get('/minha-conta', function () {
+    return view('conta.editar');
+});
