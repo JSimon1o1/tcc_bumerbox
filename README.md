@@ -23,6 +23,7 @@ Desenolvimento de Sistemas, do Centro Universitário UNIFTEC
 ### Instalação para Desenvolvimento
 
 * Clonar o repositório para um diretório de sua preferência
+  * Copiar o arquivo `env.example` para `.env`
 * Acessar a raiz do projeto e executar a partir do seu terminal:
   * `$ composer install`
   * após finalizar as tarefas do composer
