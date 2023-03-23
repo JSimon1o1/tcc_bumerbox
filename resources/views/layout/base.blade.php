@@ -14,7 +14,17 @@
             @include('includes.menu')
         </nav>
         <main class="col-md-9 col-lg-10 ms-sm-auto px-md-4">
+            <label id="informacao-label">Olá, Mercado Zé!</label>
             @yield('conteudo')
+            <div class="container-homepage">
+                <figure id="folha">
+                    <img src="{{ asset('img/folhas.png') }}" id="boneco" class="img-fluid" alt="folhas">
+                </figure>
+                <div class="div-entrar"></div>
+                <figure id="boneco">
+                    <img src="{{ asset('img/boneco.png') }}" class="img-fluid" alt="boneco">
+                </figure>
+            </div>
         </main>
     </div>
 </div>

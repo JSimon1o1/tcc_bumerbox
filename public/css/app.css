@@ -5,6 +5,10 @@ body {
     background-color: #f2f2f2;
 }
 
+.bg-verde-limao {
+    background-color: #7ee24f;
+}
+
 /*--------------------------- CABEÇALHO ---------------------------*/
 header {
     background-color: #967C4A;
@@ -18,81 +22,6 @@ header h1 {
     font-size: 38px;
     font-weight: normal;
     color: white;
-}
-
-/*----------- IMAGEM ANTES DO BUMERBOX NO CABEÇALHO ---------------*/
-#simrec {
-    margin-top: 20px;
-    margin-left: 30px;
-    height: 190px;
-}
-
-/*------------------- FORMATAÇÃO DOS TÍTULOS ----------------------*/
-h1 {
-    font-size: 50px;
-    font-weight: normal;
-}
-
-h2 {
-    color: #361A00;
-    align-content: center;
-}
-
-h3 {
-    font-weight: 300;
-}
-
-/*------------------------- PÁGINA -----------------------------------*/
-/*#cadeado {*/
-/*    height: 5rem;*/
-/*    margin: 0 auto;*/
-/*    display: block;*/
-/*}*/
-
-/*#boneco {*/
-/*    width: 150px;*/
-/*    height: auto;*/
-/*    margin: 0px !important;*/
-/*}*/
-
-/*main form {*/
-/*    margin-left: 90em;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-
-/*main button {*/
-/*    margin-left: 18em;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-self: center;*/
-/*}*/
-
-/*.container-entrar {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr 1fr 1fr;*/
-/*    border-bottom: solid 1px #967C4A;*/
-/*}*/
-
-/*.div-entrar {*/
-/*    display: flex;*/
-/*    align-items: flex-start;*/
-/*    justify-content: center;*/
-/*}*/
-
-/*#entrar {*/
-/*    margin: 0 !important;*/
-/*}*/
-
-/*#folha {*/
-/*    display: flex;*/
-/*    align-items: end;*/
-/*    justify-content: flex-start;*/
-/*    margin: 0 !important;*/
-/*}*/
-
-.bg-verde-limao {
-    background-color: #7ee24f;
 }
 
 /*--------------------------- MENU ---------------------------------*/
@@ -132,8 +61,182 @@ h3 {
 .menu-opcao {
     font-family: Arial, sans-serif;
     font-size: 23px;
+    font-weight: bold;
     color: #361A00;
     margin: 8px;
     padding: 0;
     text-align: left;
+}
+
+/*----------- IMAGEM ANTES DO BUMERBOX NO CABEÇALHO ---------------*/
+#simrec {
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 190px;
+}
+
+/*------------------- FORMATAÇÃO DOS TÍTULOS ----------------------*/
+h1 {
+    font-size: 50px;
+    font-weight: normal;
+}
+
+h2 {
+    color: #361A00;
+    align-content: center;
+}
+
+h3 {
+    font-weight: 300;
+}
+
+/*------------------------- CADASTRO -----------------------------------*/
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/*------------------------- LOGIN -----------------------------------*/
+form h2 {
+    margin: 3em auto 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#cadeado {
+    height: 5rem;
+    margin: 0 auto;
+    display: block;
+}
+
+#boneco {
+    width: 150px;
+    height: auto;
+    margin: 0 !important;
+}
+
+input {
+    background-color: #967C4A;
+    margin-top: 2em;
+}
+
+::placeholder {
+    color: white;
+    text-align: center;
+}
+
+label {
+    font-size: larger;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* ------------------ Formatação Label de Informações -------------------- */
+#informacao-label {
+    padding: 10px;
+    margin: 20px 0 0 800px;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid #967C4A;
+    background-color: #967C4A;
+    text-align: center;
+    color: #7ee24f;
+}
+
+/* ------------------ CAIXAS DE TEXTO -------------------- */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #967C4A;
+}
+
+/* ------------------- CHECKBOX ------------------ */
+input[type="checkbox"] {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+/* ------------------ BOTAO -------------------- */
+input[type="submit"] {
+    background-color: #b3ec3a;
+    color: #361A00;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10em;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/*------------------------- BOTAO -----------------------------------*/
+
+input[type="submit"] {
+    background-color: #b3ec3a;
+    color: #361A00;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10em;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/*------------------------- PÁGINA -----------------------------------*/
+main form {
+    margin-left: 90em;
+    display: flex;
+    flex-direction: column;
+}
+
+main button {
+    margin-left: 18em;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.container-entrar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: solid 1px #967C4A;
+}
+
+.div-entrar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#entrar {
+    margin: 0 !important;
+}
+
+#folha {
+    display: flex;
+    align-items: end;
+    justify-content: flex-start;
+    margin: 0 !important;
+}
+
+.container-homepage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: solid 1px #967C4A;
+    margin-top: 350px;
+    margin-left: 25%;
+    width: 600px;
 }
