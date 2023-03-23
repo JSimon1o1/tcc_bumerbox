@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('autenticacao.login');
+});
+
+Route::get('/acesso', function () {
+    return view('layout.base');
 });
