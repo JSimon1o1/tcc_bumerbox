@@ -19,15 +19,3 @@ Route::get('/', function () {
 });
 
 Route::resource('usuarios', UsuarioController::class);
-
-Route::get('/registro', function () {
-    return view('layout.base');
-});
-
-Route::get('/acesso', function () {
-    return view('layout.base');
-});
-
-Route::get('/minha-conta', function () {
-    return view('conta.editar');
-});

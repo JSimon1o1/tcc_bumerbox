@@ -15,11 +15,6 @@ class Usuario extends Model
     protected $table = 'usuarios';
     protected $fillable = ['nome', 'sobrenome', 'data_nascimento', 'cpfcnpj', 'senha', 'fidelizado', 'visivel'];
 
-    protected function getNomeCompletoAttribute(): string
-    {
-        return "$this->nome $this->sobrenome";
-    }
-
     protected function getDataNascimentoBrAttribute(): string
     {
         if (!empty($this->data_nascimento)) {

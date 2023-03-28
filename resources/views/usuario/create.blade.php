@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="d-flex justify-content-end">
-        <a type="button" class="btn btn-link" href="{{ route('usuarios.index') }}">Listagem de usuários</a>
+        <a type="button" class="btn btn-link btn-sm" href="{{ route('usuarios.index') }}">Lista</a>
     </div>
 
     <form action="{{ route('usuarios.store') }}" method="post">

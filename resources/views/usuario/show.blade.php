@@ -2,9 +2,9 @@
 
 @section('conteudo')
     <div class="d-flex justify-content-end">
-        <a type="button" class="btn btn-link" href="{{ route('usuarios.index') }}">Listagem de usuários</a>
+        @component('usuario.componente.acoes_sem_ver', ['usuario' => $usuario]) @endcomponent
     </div>
-    
+
     <div class="table-responsive">
         <table class="table table-sm table-striped table-hover">
             <tbody>

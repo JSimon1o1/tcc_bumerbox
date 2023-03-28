@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="d-flex justify-content-end mb-2">
-        <a type="button" class="btn btn-link" href="{{ route('usuarios.create') }}">Novo usuário</a>
+        <a type="button" class="btn btn-sm btn-link" href="{{ route('usuarios.create') }}">Novo</a>
     </div>
 
     <div class="table-responsive">
@@ -15,7 +15,7 @@
                     <th>Data de nascimento</th>
                     <th>CPF/CNPJ</th>
                     <th>Fidelizado</th>
-                    <th class="text-center">Ações</th>
+                    <th colspan="3" class="text-center">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,9 +27,7 @@
                         <td>{{ $usuario->cpfcnpj_formatado }}</td>
                         <td>{{ $usuario->fidelizado_sim_nao }}</td>
                         <td class="text-center">
-                            <a class="btn-sm" href="{{ route('usuarios.show', $usuario->id) }}">Visualizar</a>
-                            <a class="btn-sm" href="{{ route('usuarios.edit', $usuario->id) }}">Editar</a>
-                            <a class="btn-sm" href="{{ route('usuarios.destroy', $usuario->id) }}">Remover</a>
+                            @component('usuario.componente.acoes', ['usuario' => $usuario]) @endcomponent
                         </td>
                     </tr>
                 @endforeach
