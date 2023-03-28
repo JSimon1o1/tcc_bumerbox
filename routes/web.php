@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,10 @@ Route::get('/', function () {
     return view('autenticacao.login');
 });
 
+Route::resource('usuarios', UsuarioController::class);
+
 Route::get('/registro', function () {
-    return view('autenticacao.registro');
+    return view('layout.base');
 });
 
 Route::get('/acesso', function () {

@@ -3,28 +3,38 @@
 namespace Database\Seeders;
 
 use App\Models\Usuario;
+use Database\Factories\UsuarioFactory;
 use Exception;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class UsuarioSeeder extends Seeder
 {
     private static array $administradores = [
-        ['nome' => 'Administrador', 'sobrenome' => 'Sistema', 'data_nascimento' => '2023-03-01', 'cpfcnpj' => '101010', 'senha' => ''],
+        [
+            'nome' => 'Administrador',
+            'cpfcnpj' => '34885401704'
+        ],
     ];
 
     private function create($dados): UsuarioSeeder
     {
+        $faker = Factory::create('pt_BR');
         $usuarioModel = Usuario::where('cpfcnpj', $dados['cpfcnpj'])->first();
         if (!$usuarioModel) {
             $usuarioModel = new Usuario();
         }
 
         try {
+            $dados['senha'] = $faker->password(false);
             $usuarioModel->fill($dados)->save();
         } catch (Exception $e) {
             $this->command->error($e->getMessage());
             $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($this)));
         }
+
+//        (new UsuarioFactory())->count(1000)->create();
+
         return $this;
     }
 

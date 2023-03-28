@@ -1,8 +1,16 @@
+/*---------------------------- HTML GERAL --------------------------*/
+* {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    color: #361A00;
+}
+
 /*---------------------------- CORPO ------------------------------*/
 body {
-    font-family: Arial, sans-serif;
     font-size: 20px;
+    font-family: Arial, sans-serif;
     background-color: #f2f2f2;
+    color: #361A00;
 }
 
 .bg-verde-limao {
@@ -136,13 +144,11 @@ label {
 
 /* ------------------ Formatação Label de Informações -------------------- */
 #informacao-label {
-    padding: 10px;
-    margin: 20px 0 0 800px;
-    width: 300px;
     border-radius: 20px;
     border: 1px solid #967C4A;
     background-color: #967C4A;
     text-align: center;
+    width: 300px;
     color: #7ee24f;
 }
 
@@ -179,35 +185,7 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
-/*------------------------- BOTAO -----------------------------------*/
-
-input[type="submit"] {
-    background-color: #b3ec3a;
-    color: #361A00;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    margin-left: 10em;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
 /*------------------------- PÁGINA -----------------------------------*/
-/*main form {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-
-/*main button {*/
-/*    margin-left: 18em;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-self: center;*/
-/*}*/
-
 .container-entrar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -234,9 +212,24 @@ input[type="submit"]:hover {
 .container-homepage {
     width: 600px;
     position: relative;
-    margin: 15px auto;
-    /*margin-top: 100px;*/
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-bottom: solid 1px #967C4A;
+}
+
+/*------------------------- CSS - BOOTSTRAP -----------------------------------*/
+.table {
+    --bs-table-color: rgba(54, 26, 0, 1);
+    --bs-table-striped-bg: rgba(150, 124, 74, 0.65);
+    --bs-table-hover-bg: rgba(126, 226, 79, 0.50);
+}
+
+.btn-success {
+    --bs-btn-bg: #b3ec3a;
+    --bs-btn-border-color: #b3ec3a;
+    --bs-btn-color: #361A00;
+    --bs-btn-hover-bg: #45a049;
+    --bs-btn-hover-color: #361A00;
+    --bs-btn-hover-border-color: #45a049;
 }

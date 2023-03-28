@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('perfis', function (Blueprint $table) {
             $table->unsignedBigInteger('usuario_id')->after('id');
-            $table->string('tipo_perfil_codigo', 3)->after('usuario_id');
+            $table->string('tipo_perfil_codigo', 3)->unique()->after('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->foreign('tipo_perfil_codigo')->references('codigo')->on('tipos_perfil');
         });
