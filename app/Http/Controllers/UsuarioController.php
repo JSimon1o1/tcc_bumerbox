@@ -15,7 +15,7 @@ class UsuarioController extends Controller
         $usuarios = Usuario::paginate(15);
 
         return view('usuario.index')
-            ->withTitulo('Lisagem de usuários')
+            ->withTitulo('Listagem de usuários')
             ->withSubTitulo('Listagem com todos os usuários do sistema!')
             ->withRequest($request)
             ->withUsuarios($usuarios);

@@ -33,7 +33,10 @@ class UsuarioSeeder extends Seeder
             $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($this)));
         }
 
-//        (new UsuarioFactory())->count(1000)->create();
+        /*
+         * Popular banco com dados se necessário
+         * (new UsuarioFactory())->count(10)->create();
+         * */
 
         return $this;
     }

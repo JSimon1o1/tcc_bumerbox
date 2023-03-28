@@ -1,6 +1,5 @@
 @extends('layout.base')
 
-
 @section('conteudo')
     <div class="d-flex justify-content-end mb-2">
         <a type="button" class="btn btn-link" href="{{ route('usuarios.create') }}">Novo usuário</a>
