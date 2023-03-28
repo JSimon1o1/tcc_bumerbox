@@ -13,9 +13,8 @@ return new class extends Migration {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('sobrenome');
             $table->date('data_nascimento')->nullable();
-            $table->unsignedInteger('cpfcnpj')->unique();
+            $table->string('cpfcnpj', 14)->unique();
             $table->string('senha', 20);
             $table->boolean('fidelizado')->default(false);
             $table->boolean('visivel')->default(true);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +18,4 @@ Route::get('/', function () {
     return view('autenticacao.login');
 });
 
-Route::get('/registro', function () {
-    return view('autenticacao.registro');
-});
-
-Route::get('/acesso', function () {
-    return view('layout.base');
-});
-
-Route::get('/minha-conta', function () {
-    return view('conta.editar');
-});
+Route::resource('usuarios', UsuarioController::class);
