@@ -1,4 +1,4 @@
-<div class="container-homepage">
+<div class="container-homepage mb-1">
     <figure id="folha">
         <img src="{{ asset('img/folhas.png') }}" id="boneco" class="img-fluid" alt="folhas">
     </figure>
