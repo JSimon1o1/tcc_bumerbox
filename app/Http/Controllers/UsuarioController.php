@@ -8,6 +8,7 @@ use App\Models\Usuario;
 use DB;
 use Exception;
 use Illuminate\Http\Request;
+use Log;
 
 class UsuarioController extends Controller
 {
@@ -49,8 +50,8 @@ class UsuarioController extends Controller
             Usuario::create($request->all());
             DB::commit();
         } catch (Exception $e) {
-            \Log::debug($e->getMessage());
             DB::rollBack();
+            return redirect()->back();
         }
 
         return to_route('usuarios.index');
@@ -91,6 +92,7 @@ class UsuarioController extends Controller
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
+            return redirect()->back();
         }
 
         return to_route('usuarios.show', $usuario->id);
@@ -107,6 +109,7 @@ class UsuarioController extends Controller
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
+            return redirect()->back();
         }
 
         return to_route('usuarios.index');
