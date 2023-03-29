@@ -12,7 +12,8 @@ class UsuarioSeeder extends Seeder
     private static array $administradores = [
         [
             'nome' => 'Administrador',
-            'cpfcnpj' => '34885401704'
+            'cpfcnpj' => '34885401704',
+            'visivel' => false
         ],
     ];
 

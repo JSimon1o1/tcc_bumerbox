@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Traits\AuditionUsuarios;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Usuario extends Model
@@ -24,6 +26,11 @@ class Usuario extends Model
         } else {
             return '';
         }
+    }
+
+    public function perfis(): HasMany
+    {
+        return $this->hasMany(Perfil::class);
     }
 
     protected function getIsfidelizadoAttribute(): string
