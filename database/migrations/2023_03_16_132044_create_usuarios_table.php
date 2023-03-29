@@ -14,8 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('nome');
             $table->date('data_nascimento')->nullable();
-            $table->string('cpfcnpj', 14)->unique();
+            $table->string('cpfcnpj', 14)->unique()->nullable();
             $table->string('senha', 20);
+            $table->string('confirmar_senha', 20);
             $table->boolean('fidelizado')->default(false);
             $table->boolean('visivel')->default(true);
             $table->timestamps();

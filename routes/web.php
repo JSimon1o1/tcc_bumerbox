@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/** Apenas para ver as telas será removido */
 Route::get('/', function () {
     return view('autenticacao.login');
 });
+/** Fim */
 
+/**
+ * Padrão que será utilizado
+ */
 Route::resource('usuarios', UsuarioController::class);

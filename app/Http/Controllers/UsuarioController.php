@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Usuario;
+use DB;
+use Exception;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -12,7 +16,9 @@ class UsuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $usuarios = Usuario::where('visivel', true)->paginate(15);
+        $usuarios = Usuario::where('visivel', true)
+            ->orderBy('id', 'desc')
+            ->paginate(15);
 
         return view('usuario.index')
             ->withTitulo('Listagem de usuários')
@@ -34,33 +40,20 @@ class UsuarioController extends Controller
     /**
      * Cria um Recurso novo no banco de dados baseado no request do formulário do create
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $regas = [
-            'nome' => 'required|min:3|max:255',
-            'cpfcnpj' => 'required|min:11|max:18',
-            'senha' => 'required',
-        ];
+        $request->validated();
 
-        $feedback = [
-            'required' => 'O campo :attribute deve ser preenchido',
-            'nome.min' => 'O campo :attribute deve possuir pelo menos três carateres',
-            'nome.max' => 'O campo :attribute deve possuir no máximo três carateres',
-            'cpfcnpj.min' => 'O campo :attribute não pode possuir menos de 11 dígitos',
-            'cpfnpj.max' => 'O campo :attribute não pode possui mais de 18 dígitos',
-        ];
+        try {
+            DB::beginTransaction();
+            Usuario::create($request->all());
+            DB::commit();
+        } catch (Exception $e) {
+            \Log::debug($e->getMessage());
+            DB::rollBack();
+        }
 
-        $request->validate($regas, $feedback);
-
-        Usuario::create(
-            array_merge($request->all(), [
-                    'visivel' => $request->has('visivel'),
-                    'fidelizado' => $request->has('fidelizado'),
-                    'cpfcnpj' => preg_replace('/\D/', '', $request->get('cpfcnpj')),
-                ]
-            )
-        );
-        return redirect()->route('usuarios.index');
+        return to_route('usuarios.index');
     }
 
     /**
@@ -88,32 +81,19 @@ class UsuarioController extends Controller
     /**
      * Atualiza um Recurso do banco de dados baseado no formulário do edit e na chave primária
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UpdateUserRequest $request, Usuario $usuario)
     {
-        $regas = [
-            'nome' => 'required|min:3|max:255',
-            'cpfcnpj' => 'required|min:11|max:18',
-        ];
+        $request->validated();
 
-        $feedback = [
-            'required' => 'O campo :attribute deve ser preenchido',
-            'nome.min' => 'O campo :attribute deve possuir pelo menos três carateres',
-            'nome.max' => 'O campo :attribute deve possuir no máximo três carateres',
-            'cpfcnpj.min' => 'O campo :attribute não pode possuir menos de 11 dígitos',
-            'cpfnpj.max' => 'O campo :attribute não pode possui mais de 18 dígitos',
-        ];
+        try {
+            DB::beginTransaction();
+            $usuario->update($request->all());
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
 
-        $request->validate($regas, $feedback);
-
-        $usuario->update(
-            array_merge($request->all(), [
-                    'visivel' => $request->has('visivel'),
-                    'fidelizado' => $request->has('fidelizado'),
-                    'cpfcnpj' => preg_replace('/\D/', '', $request->get('cpfcnpj')),
-                ]
-            )
-        );
-        return redirect()->route('usuarios.show', $usuario->id);
+        return to_route('usuarios.show', $usuario->id);
     }
 
     /**
@@ -121,7 +101,14 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        $usuario->delete();
-        return redirect()->route('usuarios.index');
+        try {
+            DB::beginTransaction();
+            $usuario->delete();
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
+
+        return to_route('usuarios.index');
     }
 }

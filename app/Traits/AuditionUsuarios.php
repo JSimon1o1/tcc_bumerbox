@@ -2,9 +2,9 @@
 
 namespace App\Traits;
 
-trait AuditionUsers
+trait AuditionUsuarios
 {
-    public static function bootAuditionUsers(): void
+    public static function bootAuditionUsuarios(): void
     {
         self::createdBy();
         self::updatedBy();
@@ -43,7 +43,7 @@ trait AuditionUsers
     {
         static::deleting(function ($model) {
             if ($model->timestamps && !$model->isDirty('deleted_by')) {
-                $model->updated_by = 1;
+                $model->deleted_by = 1;
             }
         });
     }

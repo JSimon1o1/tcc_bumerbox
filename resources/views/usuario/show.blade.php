@@ -1,50 +1,55 @@
 @extends('layout.base')
 
 @section('conteudo')
-    <div class="d-flex justify-content-end">
-        @component('usuario.componente.acoes_sem_ver', ['usuario' => $usuario]) @endcomponent
-    </div>
+    <div class="row">
+        <div class="col-md-5 m-auto">
+            <div class="d-flex justify-content-end">
+                @component('componentes.acoes', ['acao' => 'show', 'resource' => 'usuarios', 'id' => $usuario->id])
+                @endcomponent
+            </div>
 
-    <div class="table-responsive">
-        <table class="table table-sm table-striped table-hover">
-            <tbody>
-            <tr>
-                <th>#</th>
-                <td>{{ $usuario->id }}</td>
-            </tr>
-            <tr>
-                <th>Nome</th>
-                <td>{{ $usuario->nome }}</td>
-            </tr>
-            <tr>
-                <th>Data de nascimento</th>
-                <td>{{ $usuario->data_nascimento_br }}</td>
-            </tr>
-            <tr>
-                <th>CPF/CNPJ</th>
-                <td>{{ $usuario->cpfcnpj_formatado }}</td>
-            </tr>
-            <tr>
-                <th>Fidelizado</th>
-                <td>{{ $usuario->fidelizado_sim_nao }}</td>
-            </tr>
-            <tr>
-                <th>Criado em</th>
-                <td>{{ $usuario->criado_em }}</td>
-            </tr>
-            <tr>
-                <th>Modifiado em</th>
-                <td>{{ $usuario->modificado_em }}</td>
-            </tr>
-            <tr>
-                <th>Criado por</th>
-                <td>{{ $usuario->criado_por }}</td>
-            </tr>
-            <tr>
-                <th>Modificado por</th>
-                <td>{{ $usuario->modificado_por }}</td>
-            </tr>
-            </tbody>
-        </table>
+            <div class="table-responsive mt-3">
+                <table class="table table-sm table-striped table-hover">
+                    <tbody>
+                    <tr>
+                        <th>#</th>
+                        <td>{{ $usuario->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <td>{{ $usuario->nome }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data de nascimento</th>
+                        <td>{{ $usuario->dataNascimentoBr }}</td>
+                    </tr>
+                    <tr>
+                        <th>CPF/CNPJ</th>
+                        <td>{{ $usuario->isCpfOrCnpj }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fidelizado</th>
+                        <td>{{ $usuario->isFidelizado }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criado em</th>
+                        <td>{{ $usuario->criadoEm }}</td>
+                    </tr>
+                    <tr>
+                        <th>Modifiado em</th>
+                        <td>{{ $usuario->modificadoEm }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criado por</th>
+                        <td>{{ $usuario->criadoPor }}</td>
+                    </tr>
+                    <tr>
+                        <th>Modificado por</th>
+                        <td>{{ $usuario->modificadoPor }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
