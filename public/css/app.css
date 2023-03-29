@@ -98,13 +98,6 @@ h3 {
     font-weight: 300;
 }
 
-/*------------------------- CADASTRO -----------------------------------*/
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
 /*------------------------- LOGIN -----------------------------------*/
 form h2 {
     margin: 3em auto 0;
@@ -232,4 +225,9 @@ input[type="submit"]:hover {
     --bs-btn-hover-bg: #45a049;
     --bs-btn-hover-color: #361A00;
     --bs-btn-hover-border-color: #45a049;
+}
+
+.alert {
+    --bs-alert-padding-y: 5px;
+    --bs-alert-margin-bottom: 0;
 }

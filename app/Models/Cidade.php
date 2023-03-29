@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\AuditionUsers;
+use App\Traits\AuditionUsuarios;
 use Illuminate\Database\Eloquent\Model;
 
 class Cidade extends Model
 {
-    use AuditionUsers;
+    use AuditionUsuarios;
 
     protected $primaryKey = 'id';
     protected $table = 'cidades';

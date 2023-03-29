@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Usuario;
-use Database\Factories\UsuarioFactory;
 use Exception;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -26,17 +25,12 @@ class UsuarioSeeder extends Seeder
         }
 
         try {
-            $dados['senha'] = $faker->password(false);
+            $dados['senha'] = $dados['confirmar_senha'] = $faker->password(false);
             $usuarioModel->fill($dados)->save();
         } catch (Exception $e) {
             $this->command->error($e->getMessage());
             $this->command->error(sprintf('Erro ao criar "%s" para "%s"', $dados['nome'], get_class($this)));
         }
-
-        /*
-         * Popular banco com dados se necessário
-         * (new UsuarioFactory())->count(10)->create();
-         * */
 
         return $this;
     }

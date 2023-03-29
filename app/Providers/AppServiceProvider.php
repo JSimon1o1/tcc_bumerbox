@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Usuario;
+use App\Observers\UsuarioObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
@@ -21,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-//        Paginator::defaultView('componentes.paginacao');
+        Usuario::observe(UsuarioObserver::class);
         Paginator::useBootstrapFive();
     }
 }
