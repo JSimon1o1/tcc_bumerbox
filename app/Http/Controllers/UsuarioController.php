@@ -7,8 +7,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Usuario;
 use DB;
 use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Log;
 
 class UsuarioController extends Controller
 {
@@ -17,8 +17,10 @@ class UsuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $usuarios = Usuario::where('visivel', true)
-            ->orderBy('id', 'desc')
+        $usuarios = Usuario::whereHas('perfis', function (Builder $query) {
+            $query->whereNot('tipo_perfil_codigo', '=', 'SYS');
+        })
+            ->where('visivel', true)
             ->paginate(15);
 
         return view('usuario.index')
