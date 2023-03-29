@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 /** Apenas para ver as telas será removido */
 Route::get('/', function () {
-    return view('autenticacao.login');
+    return view('autenticacao.login', ['fakeAuth' => false]);
+});
+
+Route::get('/conta', function () {
+    return view('conta.editar');
 });
 /** Fim */
 

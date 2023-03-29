@@ -10,15 +10,24 @@
 </header>
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-md-block menu">
-            @include('includes.menu')
-        </nav>
-        <main class="col-md-10 ms-sm-auto">
-            @component('componentes.identificacao') @endcomponent
-            @include('includes.titulopagina')
-            @yield('conteudo')
-            @include('includes.rodape')
-        </main>
+        @if(isset($fakeAuth) && !$fakeAuth)
+            <main class="col-md-12">
+                @include('includes.titulopagina')
+                @yield('conteudo')
+                @include('includes.rodape')
+            </main>
+        @else
+            <nav class="col-md-2 d-md-block menu">
+                @include('includes.menu')
+            </nav>
+            <main class="col-md-10 ms-md-auto">
+                @component('componentes.identificacao') @endcomponent
+                @include('includes.titulopagina')
+                @yield('conteudo')
+                @include('includes.rodape')
+            </main>
+        @endunless
+
     </div>
 </div>
 </body>
