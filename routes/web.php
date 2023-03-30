@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\ContaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/** Apenas para ver as telas será removido */
-Route::get('/', function () {
-    return view('autenticacao.login', ['fakeAuth' => false]);
-});
-
-Route::get('/conta', function () {
-    return view('conta.editar');
-});
-/** Fim */
-
-/**
- * Padrão que será utilizado
- */
+Route::get('/', [AutenticacaoController::class, 'login'])->name('autenticacao.login');
+Route::post('/autenticar', [AutenticacaoController::class, 'autenticar'])->name('autenticacao.autenticar');
+Route::resource('home', HomeController::class);
 Route::resource('usuarios', UsuarioController::class);
+Route::resource('conta', ContaController::class);

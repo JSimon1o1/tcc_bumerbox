@@ -39,7 +39,7 @@
                            value="{{ old('confirmar_senha') }}" placeholder="Confirmar senha"/>
                 </div>
 
-                <div class="d-flex justify-content-center my-3">
+                <div class="d-flex justify-content-center mt-3">
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" role="switch" id="fidelizado" name="fidelizado">
                         <label class="form-check-label" for="fidelizado">Fidelizado</label>
@@ -51,7 +51,7 @@
                         <label class="form-check-label" for="visivel">Visível</label>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center mt-3">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
             </form>
