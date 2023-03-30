@@ -23,13 +23,18 @@ Desenolvimento de Sistemas, do Centro Universitário UNIFTEC
 ### Instalação para Desenvolvimento
 
 * Clonar o repositório para um diretório de sua preferência
-  * Copiar o arquivo `env.example` para `.env`
+    * Copiar o arquivo `env.example` para `.env`
+  
 * Acessar a raiz do projeto e executar a partir do seu terminal:
-  * `$ composer install`
-  * após finalizar as tarefas do composer
-  * `php artisan serve`
-  * o acesso ficará disponíel pelar url
-  * `http://localhost:8000`
+    * `$ composer install`  
+
+* Após finalizar as tarefas do composer rodar a geração da chave de cripografia:
+    * `$ php artisan key:generate`
+
+* Após gerar a chave:
+    * `php artisan serve`
+    * o acesso ficará disponíel pelar url
+    * `http://localhost:8000`
 
 ### Migrações: Banco de dados
 * Após os passo acima, para criação das tabelas do banco de dados.
