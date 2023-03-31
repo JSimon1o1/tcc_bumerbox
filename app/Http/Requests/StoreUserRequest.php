@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CpfOuCnpj;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 use Str;
@@ -26,7 +27,11 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:3|max:255',
-            'cpfcnpj' => 'required|min:11|max:14|unique:usuarios,cpfcnpj,NULL,id',
+            'cpfcnpj' => [
+                'required',
+                'unique:usuarios,cpfcnpj,NULL,id',
+                new CpfOuCnpj
+            ],
             'data_nascimento' => 'nullable|date_format:Y-m-d',
             'confirmar_senha' => 'required|same:senha',
             'senha' => [
@@ -43,6 +48,7 @@ class StoreUserRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'cpfcnpj' => 'O campo :attribute não é um :attribute válido',
             'cpfcnpj.unique' => 'O campo :attribute já possuí um registro',
             'date_format' => 'O campo :attribute deve conter um valor válido',
             'required' => 'O campo :attribute deve ser preenchido',

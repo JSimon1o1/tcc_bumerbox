@@ -33,6 +33,7 @@ class UpdateUserRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'cpfcnpj' => 'O campo :attribute não é um :attribute válido',
             'cpfcnpj.unique' => 'O campo :attribute já possuí um registro',
             'date_format' => 'O campo :attribute deve conter um valor válido',
             'required' => 'O campo :attribute deve ser preenchido',
