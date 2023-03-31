@@ -16,7 +16,11 @@ class UsuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $usuarios = Usuario::where('visivel', true)
+        $usuarios = Usuario::select('usuarios.*')
+            ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
+            ->where('tipo_perfil_codigo', '!=', 'SYS')
+            ->orWhere('tipo_perfil_codigo', '=', null)
+            ->where('visivel', true)
             ->paginate(15);
 
         return view('usuario.index')
@@ -62,7 +66,7 @@ class UsuarioController extends Controller
     {
         return view('usuario.show')
             ->withTitulo('Exibição de usuários')
-            ->withSubTitulo('Os dados do usuario selecioando serão exibidos abaixo!')
+            ->withSubTitulo('Os dados do usuário selecioando serão exibidos abaixo!')
             ->withUsuario($usuario);
     }
 
