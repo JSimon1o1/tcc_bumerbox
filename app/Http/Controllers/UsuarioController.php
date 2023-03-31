@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\StoreUsuarioRequest;
+use App\Http\Requests\UpdateUsuarioRequest;
 use App\Models\Usuario;
-use DB;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -39,7 +39,7 @@ class UsuarioController extends Controller
     /**
      * Cria um Recurso novo no banco de dados baseado no request do formulário do create
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUsuarioRequest $request)
     {
         $request->validated();
 
@@ -80,7 +80,7 @@ class UsuarioController extends Controller
     /**
      * Atualiza um Recurso do banco de dados baseado no formulário do edit e na chave primária
      */
-    public function update(UpdateUserRequest $request, Usuario $usuario)
+    public function update(UpdateUsuarioRequest $request, Usuario $usuario)
     {
         $request->validated();
 

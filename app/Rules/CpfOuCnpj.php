@@ -16,65 +16,56 @@ class CpfOuCnpj implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!$this->validaCpf($value)) {
-            $fail('The :attribute is invalid');
-        }
-
-        if (!$this->validaCnpj($value)) {
+        $value = preg_replace('/\D/', '', $value);
+        if (strlen($value) === 11) {
+            $this->validaCpf($value, $fail);
+        } elseif (strlen($value) === 14) {
+            $this->validaCnpj($value, $fail);
+        } else {
             $fail('The :attribute is invalid');
         }
     }
 
-    protected function validaCpf(mixed $value): bool
+    protected function validaCpf(mixed $value, Closure $fail): void
     {
-        $value = preg_replace('/\D/', '', $value);
-
         if (strlen($value) != 11 || preg_match("/^{$value[0]}{11}$/", $value)) {
-            return false;
+            $fail('The :attribute is invalid');
         }
 
         for ($s = 10, $n = 0, $i = 0; $s >= 2; $n += $value[$i++] * $s--) ;
 
         if ($value[9] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
-            return false;
+            $fail('The :attribute is invalid');
         }
 
         for ($s = 11, $n = 0, $i = 0; $s >= 2; $n += $value[$i++] * $s--) ;
 
         if ($value[10] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
-            return false;
+            $fail('The :attribute is invalid');
         }
-
-        return true;
     }
 
-    protected function validaCnpj(mixed $value): bool
+    protected function validaCnpj(mixed $value, Closure $fail): void
     {
-        $value = preg_replace('/\D/', '', $value);
-
         $b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
         if (strlen($value) != 14) {
-            return false;
-
+            $fail('The :attribute is invalid');
         } elseif (preg_match("/^{$value[0]}{14}$/", $value) > 0) {
-
-            return false;
+            $fail('The :attribute is invalid');
         }
 
         for ($i = 0, $n = 0; $i < 12; $n += $value[$i] * $b[++$i]) ;
 
         if ($value[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
-            return false;
+            $fail('The :attribute is invalid');
         }
 
         for ($i = 0, $n = 0; $i <= 12; $n += $value[$i] * $b[$i++]) ;
 
         if ($value[13] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
-            return false;
+            $fail('The :attribute is invalid');
         }
-
-        return true;
     }
 
 }

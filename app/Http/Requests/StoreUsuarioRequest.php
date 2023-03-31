@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 use Str;
 
-class StoreUserRequest extends FormRequest
+class StoreUsuarioRequest extends FormRequest
 {
     public function authorize(): bool
     {
