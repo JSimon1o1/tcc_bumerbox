@@ -33,7 +33,7 @@ class UsuarioController extends Controller
     {
         return view('usuario.create')
             ->withTitulo('Cadastro de usuários')
-            ->withSubTitulo('Cadastre um usuários para utilizar o sistema!');
+            ->withSubTitulo('Cadastre um usuário para utilizar o sistema!');
     }
 
     /**
