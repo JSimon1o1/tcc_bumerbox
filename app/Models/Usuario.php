@@ -16,6 +16,11 @@ class Usuario extends Model
     protected $table = 'usuarios';
     protected $fillable = ['nome', 'data_nascimento', 'cpfcnpj', 'senha', 'confirmar_senha', 'fidelizado', 'visivel'];
 
+    public function perfis(): HasMany
+    {
+        return $this->hasMany(Perfil::class);
+    }
+
     protected function getIsCpfOrCnpjAttribute(): string
     {
         if (strlen($this->cpfcnpj) == 11) {
@@ -25,11 +30,6 @@ class Usuario extends Model
         } else {
             return '';
         }
-    }
-
-    public function perfis(): HasMany
-    {
-        return $this->hasMany(Perfil::class);
     }
 
     protected function getIsfidelizadoAttribute(): string
