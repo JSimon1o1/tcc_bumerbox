@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\AuditionUsuarios;
+use App\Traits\AuditionTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Perfil extends Model
 {
-    use SoftDeletes, AuditionUsuarios;
+    use SoftDeletes, AuditionTrait;
 
     protected $primaryKey = 'id';
     protected $table = 'perfis';
