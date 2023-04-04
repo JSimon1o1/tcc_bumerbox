@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class ContaController extends Controller
 {
-    public function edit(Usuario $usuario)
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
     {
         return view('conta.editar')
             ->withTitulo('Conta')

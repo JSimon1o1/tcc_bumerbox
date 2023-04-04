@@ -1,10 +1,5 @@
 <?php
 
-use App\Http\Controllers\AutenticacaoController;
-use App\Http\Controllers\ContaController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resource('registro', App\Http\Controllers\RegistroController::class);
 
-Route::get('/', [AutenticacaoController::class, 'login'])->name('autenticacao.login');
-Route::post('/autenticar', [AutenticacaoController::class, 'autenticar'])->name('autenticacao.autenticar');
-Route::resource('home', HomeController::class);
-Route::resource('usuarios', UsuarioController::class);
-Route::resource('conta', ContaController::class);
-Route::resource('registro', RegistroController::class);
+Route::get('/', [App\Http\Controllers\AutenticacaoController::class, 'index'])->name('login');
+Route::get('/logout', [App\Http\Controllers\AutenticacaoController::class, 'logout'])->name('logout');
+Route::post('/autenticar', [App\Http\Controllers\AutenticacaoController::class, 'autenticar'])->name('autenticar');
+
+Route::resource('home', App\Http\Controllers\HomeController::class);
+Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
+Route::resource('conta', App\Http\Controllers\ContaController::class);

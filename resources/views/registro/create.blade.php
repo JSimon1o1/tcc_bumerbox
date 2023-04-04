@@ -36,7 +36,7 @@
 
                 <div class="d-flex gap-2 justify-content-center mt-3">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
-                    <a type="button" class="btn btn-danger" href="{{ route('autenticacao.login') }}">Cancelar</a>
+                    <a type="button" class="btn btn-danger" href="{{ route('login') }}">Cancelar</a>
                 </div>
             </form>
         </div>

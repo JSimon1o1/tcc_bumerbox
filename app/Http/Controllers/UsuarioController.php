@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $usuarios = Usuario::select('usuarios.*')
