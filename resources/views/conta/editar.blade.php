@@ -3,7 +3,9 @@
 @section('conteudo')
     <div class="row">
         <div class="col-md-5 m-auto">
-            <form>
+            <form method="post" action="{{ route('conta.update', $usuario) }}">
+                @csrf
+                @method('PUT')
                 <div>
                     <label class="visually-hidden" for="senha-atual">Senha atual</label>
                     <input type="password" id="senha-atual" name="senha_atual" placeholder="Senha atual">

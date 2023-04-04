@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContaController extends Controller
 {
@@ -15,10 +17,12 @@ class ContaController extends Controller
     {
         return view('conta.editar')
             ->withTitulo('Conta')
-            ->withSubTitulo('Alterar senha');
+            ->withSubTitulo('Alterar senha')
+            ->withUsuario(Auth::user());
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Usuario $usuario)
     {
+        //
     }
 }

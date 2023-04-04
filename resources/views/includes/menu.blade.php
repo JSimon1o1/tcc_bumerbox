@@ -25,7 +25,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('conta.edit', 1) }}">Minha Conta</a>
+            <a class="nav-link" href="{{ route('conta.index') }}">Minha Conta</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">Sair</a>
