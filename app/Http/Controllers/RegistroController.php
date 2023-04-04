@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegistroRequest;
-use App\Models\Registro;
+use App\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +28,7 @@ class RegistroController extends Controller
         $request->validated();
         try {
             DB::beginTransaction();
-            Registro::create($request->except('confirmar_senha'));
+            Usuario::create($request->except('confirmar_senha'));
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -36,6 +36,6 @@ class RegistroController extends Controller
             return back();
         }
 
-        return to_route('autenticacao.login');
+        return to_route('login');
     }
 }

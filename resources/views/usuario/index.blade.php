@@ -1,7 +1,6 @@
 @extends('layout.base')
 
 @section('conteudo')
-    {{isset($status) ?? $status}}
     <div class="row">
         <div class="col-md-10 m-auto">
             <div class="d-flex justify-content-end">
