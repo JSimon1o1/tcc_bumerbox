@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\AuditionUsuarios;
+use App\Traits\AuditionTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RegiaoInteresseCidade extends Model
 {
-    use SoftDeletes, AuditionUsuarios;
+    use SoftDeletes, AuditionTrait;
 
     protected $primaryKey = 'id';
     protected $table = 'regioes_interesse_cidade';

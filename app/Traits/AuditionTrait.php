@@ -2,9 +2,9 @@
 
 namespace App\Traits;
 
-trait AuditionUsuarios
+trait AuditionTrait
 {
-    public static function bootAuditionUsuarios(): void
+    public static function bootAuditionTrait(): void
     {
         self::createdBy();
         self::updatedBy();
