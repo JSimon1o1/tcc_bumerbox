@@ -13,7 +13,6 @@ class AutenticacaoController extends Controller
 
     public function index()
     {
-        return view('autenticacao.login')
-            ->withFakeAuth(false);
+        return view('autenticacao.login');
     }
 }

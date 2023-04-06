@@ -1,4 +1,4 @@
-@extends('layout.base', ['fakeAuth' => $fakeAuth])
+@extends('layout.base')
 
 @section('conteudo')
     <div class="row">
