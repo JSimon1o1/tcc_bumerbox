@@ -1,35 +1,28 @@
 <?php
 
-namespace App\Models;
+namespace App\Traits;
 
-use App\Traits\AuditionUsuarios;
+use App\Models\Usuario;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
 
-class Registro extends Model
+trait UsuarioTrait
 {
-    use SoftDeletes, AuditionUsuarios;
-
-    protected $primaryKey = 'id';
-    protected $table = 'usuarios';
-    protected $fillable = ['nome', 'data_nascimento', 'cpfcnpj', 'senha', 'confirmar_senha', 'fidelizado', 'visivel'];
+    protected function setSenhaAttribute($senha): string
+    {
+        return $this->attributes['senha'] = Hash::make($senha);
+    }
 
     protected function getIsCpfOrCnpjAttribute(): string
     {
-        if (strlen($this->cpfcnpj) == 11) {
-            return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $this->cpfcnpj);
-        } else if (strlen($this->cpfcnpj) == 14) {
-            return preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $this->cpfcnpj);
+        $cpfcnpj = preg_replace('/\D/', '', $this->cpfcnpj);
+        if (strlen($cpfcnpj) == 11) {
+            return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpfcnpj);
+        } else if (strlen($cpfcnpj) == 14) {
+            return preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $cpfcnpj);
         } else {
             return '';
         }
-    }
-    public function perfis(): HasMany
-    {
-        return $this->hasMany(Perfil::class);
     }
 
     protected function getIsfidelizadoAttribute(): string

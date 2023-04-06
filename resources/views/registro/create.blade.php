@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <div class="row">
-        <div class="col-md-5 m-auto">
+        <div class="col-md-4 m-auto">
             @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
 
             <form action="{{ route('registro.store') }}" method="post">
@@ -26,17 +26,17 @@
 
                 <div>
                     <label for="senha" class="visually-hidden">Senha</label>
-                    <input type="password" name="senha" id="senha" value="{{ old('senha') }}" placeholder="Senha"/>
+                    <input type="password" name="senha" id="senha" placeholder="Senha"/>
                 </div>
 
                 <div>
                     <label for="confirmar_senha" class="visually-hidden">Senha</label>
-                    <input type="password" name="confirmar_senha" id="confirmar_senha"
-                           value="{{ old('confirmar_senha') }}" placeholder="Confirmar senha"/>
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar senha"/>
                 </div>
 
-                <div class="d-flex justify-content-center mt-3">
+                <div class="d-flex gap-2 justify-content-center mt-3">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <a type="button" class="btn btn-danger" href="{{ route('login') }}">Cancelar</a>
                 </div>
             </form>
         </div>

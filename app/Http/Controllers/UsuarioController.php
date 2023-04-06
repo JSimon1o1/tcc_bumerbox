@@ -8,15 +8,22 @@ use App\Models\Usuario;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
-    /**
-     * Exibe a listagem do Recurso (objeto do banco de dados)
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
-        $usuarios = Usuario::where('visivel', true)
+        $usuarios = Usuario::select('usuarios.*')
+            ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
+            ->where('tipo_perfil_codigo', '!=', 'SYS')
+            ->orWhere('tipo_perfil_codigo', '=', null)
+            ->where('visivel', true)
             ->paginate(15);
 
         return view('usuario.index')
@@ -26,9 +33,6 @@ class UsuarioController extends Controller
             ->withUsuarios($usuarios);
     }
 
-    /**
-     * Exibe o formulário para criação de um novo Recurso
-     */
     public function create()
     {
         return view('usuario.create')
@@ -36,9 +40,6 @@ class UsuarioController extends Controller
             ->withSubTitulo('Cadastre um usuário para utilizar o sistema!');
     }
 
-    /**
-     * Cria um Recurso novo no banco de dados baseado no request do formulário do create
-     */
     public function store(StoreUsuarioRequest $request)
     {
         $request->validated();
@@ -48,6 +49,7 @@ class UsuarioController extends Controller
             Usuario::create($request->all());
             DB::commit();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             DB::rollBack();
             return redirect()->back();
         }
@@ -55,20 +57,14 @@ class UsuarioController extends Controller
         return to_route('usuarios.index');
     }
 
-    /**
-     * Exibe um Recurso específico do banco de dados baseado na chave primária
-     */
     public function show(Usuario $usuario)
     {
         return view('usuario.show')
             ->withTitulo('Exibição de usuários')
-            ->withSubTitulo('Os dados do usuario selecioando serão exibidos abaixo!')
+            ->withSubTitulo('Os dados do usuário selecioando serão exibidos abaixo!')
             ->withUsuario($usuario);
     }
 
-    /**
-     * Exibe o formulário para edição de um Recurso
-     */
     public function edit(Usuario $usuario)
     {
         return view('usuario.edit')
@@ -77,9 +73,6 @@ class UsuarioController extends Controller
             ->withUsuario($usuario);
     }
 
-    /**
-     * Atualiza um Recurso do banco de dados baseado no formulário do edit e na chave primária
-     */
     public function update(UpdateUsuarioRequest $request, Usuario $usuario)
     {
         $request->validated();
@@ -89,6 +82,7 @@ class UsuarioController extends Controller
             $usuario->update($request->all());
             DB::commit();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             DB::rollBack();
             return redirect()->back();
         }
@@ -96,9 +90,6 @@ class UsuarioController extends Controller
         return to_route('usuarios.show', $usuario->id);
     }
 
-    /**
-     * Remove um Recurso do banco de dados baseado na chave primária
-     */
     public function destroy(Usuario $usuario)
     {
         try {
@@ -106,6 +97,7 @@ class UsuarioController extends Controller
             $usuario->delete();
             DB::commit();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             DB::rollBack();
             return redirect()->back();
         }

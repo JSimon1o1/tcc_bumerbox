@@ -6,13 +6,14 @@ use App\Models\Usuario;
 use Exception;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
     private static array $administradores = [
         [
             'nome' => 'Administrador',
-            'cpfcnpj' => '34885401704',
+            'senha' => '@dm1n1str@d0r',
             'visivel' => false
         ],
     ];
@@ -20,13 +21,16 @@ class UsuarioSeeder extends Seeder
     private function create($dados): UsuarioSeeder
     {
         $faker = Factory::create('pt_BR');
+
+        $dados['senha'] = Hash::make($dados['senha']);
+        $dados['cpfcnpj'] = $faker->unique()->cpf(false);
+
         $usuarioModel = Usuario::where('cpfcnpj', $dados['cpfcnpj'])->first();
         if (!$usuarioModel) {
             $usuarioModel = new Usuario();
         }
 
         try {
-            $dados['senha'] = $dados['confirmar_senha'] = $faker->password(false);
             $usuarioModel->fill($dados)->save();
         } catch (Exception $e) {
             $this->command->error($e->getMessage());
