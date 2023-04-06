@@ -19,8 +19,7 @@ class RegistroController extends Controller
     {
         return view('registro.create')
             ->withTitulo('Registro de usuário')
-            ->withSubTitulo('Realize seu cadastro para acessar o sistema!')
-            ->withFakeAuth(false);
+            ->withSubTitulo('Realize seu cadastro para acessar o sistema!');
     }
 
     public function store(StoreRegistroRequest $request)
