@@ -37,7 +37,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $usuarios->links() }}
+                    {{ $usuarios->onEachSide(0)->links() }}
                 @else
                     <p>Nenhum usuário encontrado!</p>
                 @endif

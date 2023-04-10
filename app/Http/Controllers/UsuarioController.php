@@ -24,7 +24,7 @@ class UsuarioController extends Controller
             ->where('tipo_perfil_codigo', '!=', 'SYS')
             ->orWhere('tipo_perfil_codigo', '=', null)
             ->where('visivel', true)
-            ->paginate(15);
+            ->paginate(10);
 
         return view('usuario.index')
             ->withTitulo('Listagem de usuários')

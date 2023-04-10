@@ -18,8 +18,6 @@ class StoreRegistroRequest extends FormRequest
     {
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
-            'visivel' => $this->has('visivel'),
-            'fidelizado' => $this->has('fidelizado'),
         ]);
     }
 

@@ -184,6 +184,10 @@ input[type="checkbox"] {
     border-bottom: solid 1px #967C4A;
 }
 
+.bg-green-lime {
+    background-color: #7ee24f;
+}
+
 /*------------------------- CSS - BOOTSTRAP -----------------------------------*/
 .table {
     --bs-table-color: rgba(54, 26, 0, 1);
@@ -205,6 +209,13 @@ input[type="checkbox"] {
     --bs-alert-margin-bottom: 0;
 }
 
-.bg-green-lime {
-    background-color: #7ee24f;
+.pagination {
+    --bs-pagination-bg: none;
+    --bs-pagination-border-color: none;
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-color: rgba(54, 26, 0, 1);
+    --bs-pagination-hover-bg: rgba(126, 226, 79, 0.50);
+    --bs-pagination-hover-color: rgba(54, 26, 0, 1);
+    --bs-pagination-active-bg: rgba(150, 124, 74, 0.65);
+    --bs-pagination-active-color: #7ee24f;
 }
