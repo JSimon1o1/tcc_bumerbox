@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('registro', App\Http\Controllers\RegistroController::class);
 
 Route::get('/', [App\Http\Controllers\AutenticacaoController::class, 'index'])->name('login');
 Route::get('/logout', [App\Http\Controllers\AutenticacaoController::class, 'logout'])->name('logout');
@@ -21,3 +20,5 @@ Route::post('/autenticar', [App\Http\Controllers\AutenticacaoController::class, 
 Route::resource('home', App\Http\Controllers\HomeController::class);
 Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
 Route::resource('conta', App\Http\Controllers\ContaController::class);
+Route::resource('registro', App\Http\Controllers\RegistroController::class);
+Route::resource('minhaconta', App\Http\Controllers\MinhaContaController::class);

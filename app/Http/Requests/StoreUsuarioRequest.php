@@ -33,7 +33,6 @@ class StoreUsuarioRequest extends FormRequest
                 new CpfOuCnpj
             ],
             'data_nascimento' => 'nullable|date_format:Y-m-d',
-            'confirmar_senha' => 'required|same:senha',
             'senha' => [
                 'required',
                 Password::min(8)
@@ -54,7 +53,6 @@ class StoreUsuarioRequest extends FormRequest
             'required' => 'O campo :attribute deve ser preenchido',
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
-            'confirmar_senha' => 'O campo :attribute deve corresponder à senha.',
             'senha' => [
                 'O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula',
                 "O campo :attribute deve conter pelo menos um símbolo.",
