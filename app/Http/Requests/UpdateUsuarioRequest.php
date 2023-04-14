@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Str;
+use Illuminate\Support\Str;
 
 class UpdateUsuarioRequest extends FormRequest
 {

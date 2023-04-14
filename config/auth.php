@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'autenticacao',
     ],
 
     /*
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'autenticacao',
         ],
     ],
 
@@ -60,7 +60,7 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'autenticacao' => [
             'driver' => 'eloquent',
             'model' => App\Models\Autenticacao::class,
         ],
@@ -92,7 +92,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
+            'provider' => 'autenticacao',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

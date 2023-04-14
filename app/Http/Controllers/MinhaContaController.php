@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
 use App\Http\Requests\StoreMinhaContaRequest;
-use Request;
-use DB;
-use Log;
-use Auth;
-use AutenticacaoTrait;
+use App\Models\Usuario;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class MinhaContaController extends Controller
 {
@@ -17,28 +15,28 @@ class MinhaContaController extends Controller
         $this->middleware('auth');
     }
 
-    public function show(Usuario $usuario)
+    public function edit(int $id)
     {
-        return view('minhaconta.show')
+        return view('minhaconta.edit')
             ->withTitulo('Alterar Senha')
-            ->withUsuario($usuario);
+            ->withUsuarioId($id);
     }
 
-    public function update(StoreMinhaContaRequest $request, Usuario $usuario)
+    public function update(StoreMinhaContaRequest $request, int $usuarioId)
     {
         $request->validated();
 
         try {
             DB::beginTransaction();
-            $usuario = Auth::user();
-            $usuario->senha = bcrypt($request->get('nova_senha'));
+            $usuario = Usuario::find($usuarioId);
+            $usuario->senha = $request->get('nova_senha');
             $usuario->save();
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return redirect()->back();
+            return back()->withErrors('Não foi possível alterar a senha.');
         }
-        return to_route('logout');
+        return to_route('logout')->withSuccess('Senha alterada com sucesso! Por favor, efetue o login novamente.');
     }
 }

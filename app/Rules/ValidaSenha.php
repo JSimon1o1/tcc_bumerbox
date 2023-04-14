@@ -4,23 +4,22 @@ namespace App\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Auth;
-use Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Translation\PotentiallyTranslatedString;
 
 class ValidaSenha implements ValidationRule
 {
     /**
      * Run the validation rule.
      *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     * @param string $attribute
+     * @param mixed $value
+     * @param Closure(string): PotentiallyTranslatedString $fail
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        Log::error($value);
-        if(password_verify($value, Auth::user()->getAuthPassword())){
-        } else{
-            $fail('Senha antiga informada inválida.');
+        if (!password_verify($value, Auth::user()->getAuthPassword())) {
+            $fail('The :attribute is invalid.');
         }
     }
 }

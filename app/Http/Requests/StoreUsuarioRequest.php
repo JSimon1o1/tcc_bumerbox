@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use App\Rules\CpfOuCnpj;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
-use Str;
 
 class StoreUsuarioRequest extends FormRequest
 {
@@ -36,9 +36,10 @@ class StoreUsuarioRequest extends FormRequest
             'senha' => [
                 'required',
                 Password::min(8)
-                    ->letters()
                     ->mixedCase()
-                    ->numbers()->symbols()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
                     ->uncompromised()
             ]
         ];
@@ -54,9 +55,10 @@ class StoreUsuarioRequest extends FormRequest
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
             'senha' => [
-                'O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula',
+                "O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula",
                 "O campo :attribute deve conter pelo menos um símbolo.",
                 "O campo :attribute deve conter pelo menos um número.",
+                "O campo :attribute possuí uma :attribute fraca. Por favor, forneça uma :attribute mais forte."
             ],
 
         ];

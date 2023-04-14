@@ -3,14 +3,15 @@
 @section('conteudo')
     <div class="row">
         <div class="col-md-4 m-auto">
+
             @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
 
-            <form action="{{ route('minhaconta.update', Auth::user()->id )}}" method="post">
+            <form action="{{ route('minhaconta.update', $usuarioId )}}" method="post">
                 @csrf
                 @method('PUT')
                 <div>
-                    <label for="senha_antiga" class="visually-hidden">Senha</label>
-                    <input type="password" name="senha_antiga" id="senha_antiga" placeholder="Senha Atual"/>
+                    <label for="senha_atual" class="visually-hidden">Senha</label>
+                    <input type="password" name="senha_atual" id="senha_atual" placeholder="Senha Atual"/>
                 </div>
 
                 <div>
@@ -19,8 +20,8 @@
                 </div>
 
                 <div>
-                    <label for="nova_senha_confirmar" class="visually-hidden">Senha</label>
-                    <input type="password" name="nova_senha_confirmar" id="nova_senha_confirmar" placeholder="Confirmar senha"/>
+                    <label for="confirmar_senha" class="visually-hidden">Senha</label>
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar senha"/>
                 </div>
 
                 <div class="d-flex gap-2 justify-content-center mt-3">

@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class RegistroController extends Controller
 {
-    public function index()
-    {
-        return to_route('registro.create');
-    }
-
     public function create()
     {
         return view('registro.create')
@@ -32,9 +27,9 @@ class RegistroController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return back();
+            return back()->withErrors('Não foi possível efetuar o registro!');
         }
 
-        return to_route('login');
+        return to_route('login')->withSuccess('Registro realizado com sucesso!');
     }
 }
