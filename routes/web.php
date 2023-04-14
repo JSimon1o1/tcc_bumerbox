@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers as Controllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\AutenticacaoController::class, 'index'])->name('login');
-Route::get('/logout', [App\Http\Controllers\AutenticacaoController::class, 'logout'])->name('logout');
-Route::post('/autenticar', [App\Http\Controllers\AutenticacaoController::class, 'autenticar'])->name('autenticar');
+Route::get('/', [Controllers\AutenticacaoController::class, 'index'])->name('login');
+Route::get('/logout', [Controllers\AutenticacaoController::class, 'logout'])->name('logout');
+Route::post('/autenticar', [Controllers\AutenticacaoController::class, 'autenticar'])->name('autenticar');
 
-Route::resource('home', App\Http\Controllers\HomeController::class);
-Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
-Route::resource('conta', App\Http\Controllers\ContaController::class);
-Route::resource('registro', App\Http\Controllers\RegistroController::class);
-Route::resource('minhaconta', App\Http\Controllers\MinhaContaController::class);
+Route::resource('home', Controllers\HomeController::class);
+Route::resource('usuarios', Controllers\UsuarioController::class);
+Route::resource('conta', Controllers\ContaController::class);
+Route::resource('registro', Controllers\RegistroController::class);
+Route::resource('minhaconta', Controllers\MinhaContaController::class);

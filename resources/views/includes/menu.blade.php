@@ -27,7 +27,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('minhaconta.show', Auth::user()->id ) }}">Minha Conta</a>
+                    <a class="nav-link" href="{{ route('minhaconta.edit', Auth::user() ) }}">Minha Conta</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}">Sair</a>

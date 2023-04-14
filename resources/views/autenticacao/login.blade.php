@@ -22,7 +22,7 @@
                     <button type="submit" class="btn btn-success">Entrar</button>
                 </div>
                 <div class="d-flex justify-content-center mt-1">
-                    <a class="btn btn-sm btn-link" role="button" href="{{ route('registro.index') }}">Registrar-se</a>
+                    <a class="btn btn-sm btn-link" role="button" href="{{ route('registro.create') }}">Registrar-se</a>
                 </div>
             </form>
         </div>

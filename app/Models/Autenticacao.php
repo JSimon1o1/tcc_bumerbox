@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User;
+use Illuminate\Foundation\Auth\User as Model;
 
-class Autenticacao extends User
+class Autenticacao extends Model
 {
     protected $primaryKey = 'id';
     protected $table = 'usuarios';

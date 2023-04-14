@@ -35,9 +35,10 @@ class StoreRegistroRequest extends FormRequest
             'senha' => [
                 'required',
                 Password::min(8)
-                    ->letters()
                     ->mixedCase()
-                    ->numbers()->symbols()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
                     ->uncompromised()
             ]
         ];
@@ -57,6 +58,7 @@ class StoreRegistroRequest extends FormRequest
                 'O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula',
                 "O campo :attribute deve conter pelo menos um símbolo.",
                 "O campo :attribute deve conter pelo menos um número.",
+                "O campo :attribute possuí uma :attribute fraca. Por favor, forneça uma :attribute mais forte."
             ],
 
         ];

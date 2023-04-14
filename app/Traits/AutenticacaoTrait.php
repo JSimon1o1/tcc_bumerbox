@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,12 +19,12 @@ trait AutenticacaoTrait
 
         if (Auth::attempt($request->except(['_token', 'senha']))) {
             $request->session()->regenerate();
-            return redirect()->intended($this->redirectTo);
+            return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        return back()->withErrors([
-            'cpfcnpj' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        return back()
+            ->withErrors(['cpfcnpj' => 'The provided credentials do not match our records.',])
+            ->onlyInput('cpfcnpj');
     }
 
     protected function validateLogin(Request $request): void
@@ -34,11 +35,8 @@ trait AutenticacaoTrait
     public function logout(Request $request): Application|Redirector|RedirectResponse
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
-        $request->session()->regenerate();
-
-        return redirect('/');
+        $request->session()->regenerateToken();
+        return to_route('login')->withScucess('Logout efetuado com sucesso!');
     }
 }
