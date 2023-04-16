@@ -22,7 +22,8 @@ class RegistroController extends Controller
         $request->validated();
         try {
             DB::beginTransaction();
-            Usuario::create($request->except('confirmar_senha'));
+            $usuario = Usuario::create($request->except('confirmar_senha'));
+            $usuario->perfis()->create(['usuario_id' => $usuario->id, 'tipo_perfil_codigo' => 'USR']);
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());

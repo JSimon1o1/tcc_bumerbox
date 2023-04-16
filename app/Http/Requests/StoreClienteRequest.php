@@ -7,17 +7,21 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 
-class StoreUsuarioRequest extends FormRequest
+class StoreClienteRequest extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
-    protected function prepareForValidation(): void
+    protected function prepareForValidation()
     {
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
+            'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
+            'telefone' => Str::replace(['(', ')', ' '], '', $this->get('telefone')),
+            'rua' => $this->get('endereco'),
+            'numero' => 0,
             'visivel' => $this->has('visivel'),
             'fidelizado' => $this->has('fidelizado'),
         ]);
@@ -32,7 +36,9 @@ class StoreUsuarioRequest extends FormRequest
                 'unique:usuarios,cpfcnpj,NULL,id',
                 new CpfOuCnpj
             ],
+            'cep' => 'required|digits:8',
             'data_nascimento' => 'nullable|date_format:Y-m-d',
+            'telefone' => 'nullable|min:10|max:11',
             'senha' => [
                 'required',
                 Password::min(8)
@@ -54,6 +60,7 @@ class StoreUsuarioRequest extends FormRequest
             'required' => 'O campo :attribute deve ser preenchido',
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
+            'digits' => 'O campo :attribute deve possuir :digits dígitos',
             'senha' => [
                 "O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula",
                 "O campo :attribute deve conter pelo menos um símbolo.",

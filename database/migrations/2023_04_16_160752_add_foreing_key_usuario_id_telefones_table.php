@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('perfis', function (Blueprint $table) {
+        Schema::table('telefones', function (Blueprint $table) {
             $table->unsignedBigInteger('usuario_id')->after('id');
-            $table->string('tipo_perfil_codigo', 3)->after('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
-            $table->foreign('tipo_perfil_codigo')->references('codigo')->on('tipos_perfil');
         });
     }
 
@@ -24,10 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('perfis', function (Blueprint $table) {
-            $table->dropForeign('perfis_usuario_id_foreign');
-            $table->dropForeign('perfis_tipo_perfil_codigo_foreign');
-            $table->dropColumn('tipo_perfil_codigo');
+        Schema::table('telefones', function (Blueprint $table) {
+            $table->dropForeign('telefones_usuario_id_foreign');
+            $table->dropColumn('usuario_id');
         });
     }
 };

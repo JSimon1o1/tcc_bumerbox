@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
+use App\Models\Perfil;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Http\Request;
@@ -21,8 +22,7 @@ class UsuarioController extends Controller
     {
         $usuarios = Usuario::select('usuarios.*')
             ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
-            ->where('tipo_perfil_codigo', '!=', 'SYS')
-            ->orWhere('tipo_perfil_codigo', '=', null)
+            ->orWhere('tipo_perfil_codigo', '=', 'USR')
             ->where('visivel', true)
             ->paginate(10);
 
@@ -46,7 +46,8 @@ class UsuarioController extends Controller
 
         try {
             DB::beginTransaction();
-            Usuario::create($request->all());
+            $usuario = Usuario::create($request->all());
+            $usuario->perfis()->create(['usuario_id' => $usuario->id, 'tipo_perfil_codigo' => 'USR']);
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -54,7 +55,8 @@ class UsuarioController extends Controller
             return redirect()->back();
         }
 
-        return to_route('usuarios.index');
+        return to_route('usuarios.show', $usuario->id)
+            ->with('message', "Usuário $usuario->nome. Salvo com sucesso");
     }
 
     public function show(Usuario $usuario)
