@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
-use App\Models\Perfil;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Http\Request;
@@ -52,17 +51,16 @@ class UsuarioController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return redirect()->back();
+            return back()->with('success', false)->with('menssagem', "Não possível salvar o registro!");
         }
 
-        return to_route('usuarios.show', $usuario->id)
-            ->with('message', "Usuário $usuario->nome. Salvo com sucesso");
+        return to_route('usuarios.show', $usuario->id)->with('success', true)->with('menssagem', "Registro salvo com sucesso!");
     }
 
     public function show(Usuario $usuario)
     {
         return view('usuario.show')
-            ->withTitulo('Exibição de usuários')
+            ->withTitulo($usuario->nome)
             ->withSubTitulo('Os dados do usuário selecioando serão exibidos abaixo!')
             ->withUsuario($usuario);
     }
@@ -70,7 +68,7 @@ class UsuarioController extends Controller
     public function edit(Usuario $usuario)
     {
         return view('usuario.edit')
-            ->withTitulo('Editação de usuários')
+            ->withTitulo($usuario->nome)
             ->withSubTitulo('Altere os dados do usuário selecionado!')
             ->withUsuario($usuario);
     }
@@ -86,10 +84,10 @@ class UsuarioController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return redirect()->back();
+            return back()->with('success', false)->with('menssagem', "Não possível atualizar o registro!");
         }
 
-        return to_route('usuarios.show', $usuario->id);
+        return to_route('usuarios.show', $usuario->id)->with('success', true)->with('menssagem', "Registro salvo com sucesso!");
     }
 
     public function destroy(Usuario $usuario)
@@ -101,9 +99,9 @@ class UsuarioController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return redirect()->back();
+            return back()->with('success', false)->with('menssagem', "Não remover o registro!");
         }
 
-        return to_route('usuarios.index');
+        return to_route('usuarios.index')->with('success', true)->with('menssagem', "Registro removido com sucesso!");
     }
 }

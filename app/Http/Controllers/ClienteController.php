@@ -60,11 +60,10 @@ class ClienteController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('message', "Não foi possível inserir o registro");
+            return back()->with('success', false)->with('menssagem', "Não possível salvar o registro!");
         }
 
-        return to_route('clientes.show', $cliente->id)
-            ->with('message', "Cliente $cliente->nome. Salvo com sucesso");
+        return to_route('clientes.show', $cliente->id)->with('success', true)->with('menssagem', "Registro salvo com sucesso!");
     }
 
     public function show(Usuario $cliente)
@@ -78,7 +77,7 @@ class ClienteController extends Controller
     public function edit(Usuario $cliente)
     {
         return view('cliente.edit')
-            ->withTitulo("Editando $cliente->nome")
+            ->withTitulo($cliente->nome)
             ->withSubTitulo('Altere os dados do cliente abaixo!')
             ->withCliente($cliente);
     }
@@ -109,10 +108,10 @@ class ClienteController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return redirect()->back();
+            return back()->with('success', false)->with('menssagem', "Não possível salvar o registro!");
         }
 
-        return to_route('clientes.show', $cliente->id);
+        return to_route('clientes.show', $cliente->id)->with('success', true)->with('menssagem', "Registro salvo com sucesso!");
     }
 
     public function destroy(Usuario $cliente)
@@ -126,9 +125,9 @@ class ClienteController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return redirect()->back();
+            return back()->with('success', false)->with('menssagem', "Não possível remover o registro!");
         }
 
-        return to_route('clientes.index');
+        return to_route('clientes.index')->with('success', false)->with('menssagem', "Registro removido com sucesso!");
     }
 }

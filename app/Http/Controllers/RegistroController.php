@@ -28,9 +28,9 @@ class RegistroController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->withErrors('Não foi possível efetuar o registro!');
+            return back()->with('success', false)->with('menssagem', 'Não foi possível efetuar o registro');
         }
 
-        return to_route('login')->withSuccess('Registro realizado com sucesso!');
+        return to_route('login')->with('success', true)->with('menssagem', 'Registro efetuado com sucesso');
     }
 }
