@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-5 m-auto">
             <div class="d-flex justify-content-end">
-                @component('componentes.navegacao.acoes', ['acao' => 'show', 'resource' => 'usuarios', 'id' => $usuario->id])
+                @component('componentes.navegacao.acoes', ['acao' => 'show', 'resource' => 'clientes', 'id' => $cliente->id])
                 @endcomponent
             </div>
 
@@ -13,39 +13,51 @@
                     <tbody>
                     <tr>
                         <th>#</th>
-                        <td>{{ $usuario->id }}</td>
+                        <td>{{ $cliente->id }}</td>
                     </tr>
                     <tr>
                         <th>Nome</th>
-                        <td>{{ $usuario->nome }}</td>
+                        <td>{{ $cliente->nome }}</td>
                     </tr>
                     <tr>
                         <th>Data de nascimento</th>
-                        <td>{{ $usuario->dataNascimentoBr }}</td>
+                        <td>{{ $cliente->dataNascimentoBr }}</td>
                     </tr>
                     <tr>
                         <th>CPF/CNPJ</th>
-                        <td>{{ $usuario->isCpfOrCnpj }}</td>
+                        <td>{{ $cliente->isCpfOrCnpj }}</td>
+                    </tr>
+                    <tr>
+                        <th>CEP</th>
+                        <td>{{ $cliente->enderecos->first()->isCep ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Endereço</th>
+                        <td>{{ $cliente->enderecos->first()->rua ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefone</th>
+                        <td>{{ $cliente->telefones->first()->isNumero ?? '' }}</td>
                     </tr>
                     <tr>
                         <th>Fidelizado</th>
-                        <td>{{ $usuario->isFidelizado }}</td>
+                        <td>{{ $cliente->isFidelizado }}</td>
                     </tr>
                     <tr>
                         <th>Criado em</th>
-                        <td>{{ $usuario->criadoEm }}</td>
+                        <td>{{ $cliente->criadoEm }}</td>
                     </tr>
                     <tr>
                         <th>Modifiado em</th>
-                        <td>{{ $usuario->modificadoEm }}</td>
+                        <td>{{ $cliente->modificadoEm }}</td>
                     </tr>
                     <tr>
                         <th>Criado por</th>
-                        <td>{{ $usuario->criadoPor }}</td>
+                        <td>{{ $cliente->criadoPor }}</td>
                     </tr>
                     <tr>
                         <th>Modificado por</th>
-                        <td>{{ $usuario->modificadoPor }}</td>
+                        <td>{{ $cliente->modificadoPor }}</td>
                     </tr>
                     </tbody>
                 </table>

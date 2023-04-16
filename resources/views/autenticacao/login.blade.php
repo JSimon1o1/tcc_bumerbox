@@ -11,13 +11,13 @@
                 </figure>
                 <div>
                     <label class="visually-hidden" for="cpfcnpj">CPF/CNPJ</label>
-                    <input type="text" id="cpfcnpj" name="cpfcnpj" placeholder="CPF/CNPJ"><br><br>
+                    <input type="text" id="cpfcnpj" name="cpfcnpj" data-type="cpfcnpj" placeholder="CPF/CNPJ"><br><br>
                 </div>
                 <div>
                     <label class="visually-hidden" for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" placeholder="Senha"><br><br>
                 </div>
-                @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
+                @component('componentes.avisos.avisos', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-success">Entrar</button>
                 </div>

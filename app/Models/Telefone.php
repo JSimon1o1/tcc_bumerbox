@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use App\Traits\AuditionTrait;
-use App\Traits\EnderecoTrait;
+use App\Traits\TelefoneTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Endereco extends Model
+class Telefone extends Model
 {
-    use SoftDeletes, AuditionTrait, EnderecoTrait;
+    use SoftDeletes, AuditionTrait, TelefoneTrait;
 
     protected $primaryKey = 'id';
-    protected $table = 'enderecos';
-    protected $fillable = ['usuario_id', 'cidade_id', 'rua', 'cep', 'numero'];
+    protected $table = 'telefones';
+    protected $fillable = ['usuario_id', 'numero'];
 
     public function usuario(): BelongsTo
     {

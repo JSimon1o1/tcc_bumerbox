@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-4 m-auto">
 
-            @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
+            @component('componentes.avisos.avisos', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
 
             <form action="{{ route('minhaconta.update', $usuarioId )}}" method="post">
                 @csrf

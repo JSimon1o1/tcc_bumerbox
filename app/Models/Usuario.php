@@ -20,4 +20,14 @@ class Usuario extends Model
     {
         return $this->hasMany(Perfil::class);
     }
+
+    public function enderecos(): HasMany
+    {
+        return $this->hasMany(Endereco::class);
+    }
+
+    public function telefones(): HasMany
+    {
+        return $this->hasMany(Telefone::class);
+    }
 }

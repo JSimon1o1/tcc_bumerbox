@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-md-5 m-auto">
             <div class="d-flex justify-content-end">
-                @component('componentes.acoes', ['acao' => 'create', 'resource' => 'usuarios']) @endcomponent
+                @component('componentes.navegacao.acoes', ['acao' => 'create', 'resource' => 'usuarios']) @endcomponent
             </div>
 
-            @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
+            @component('componentes.avisos.avisos', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
 
             <form action="{{ route('usuarios.store') }}" method="post">
                 @csrf
@@ -18,25 +18,24 @@
 
                 <div>
                     <label for="data_nascimento" class="visually-hidden">Data de Nascimento</label>
-                    <input type="date" name="data_nascimento" id="data_nascimento" value="{{ old('data_nascimento') }}"
-                           placeholder="Data de Nascimento"/>
+                    <input type="text" name="data_nascimento" id="data_nascimento" value="{{ old('data_nascimento') }}"
+                           data-type="date" placeholder="Data de Nascimento"/>
                 </div>
 
                 <div>
                     <label for="cpfcnpj" class="visually-hidden">CPF/CNPJ</label>
-                    <input type="text" name="cpfcnpj" id="cpfcnpj" value="{{ old('cpfcnpj') }}" pattern="^[0-9\.\-\/]*"
-                           maxlength="18" placeholder="CPF/CNPJ"/>
+                    <input type="text" name="cpfcnpj" id="cpfcnpj" value="{{ old('cpfcnpj') }}" data-type="cpfcnpj"
+                           placeholder="CPF/CNPJ"/>
                 </div>
 
                 <div>
                     <label for="senha" class="visually-hidden">Senha</label>
-                    <input type="password" name="senha" id="senha" value="{{ old('senha') }}" placeholder="Senha"/>
+                    <input type="password" name="senha" id="senha" placeholder="Senha"/>
                 </div>
 
                 <div>
-                    <label for="confirmar_senha" class="visually-hidden">Senha</label>
-                    <input type="password" name="confirmar_senha" id="confirmar_senha"
-                           value="{{ old('confirmar_senha') }}" placeholder="Confirmar senha"/>
+                    <label for="confirmar_senha" class="visually-hidden">Confirmar Senha</label>
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar senha"/>
                 </div>
 
                 <div class="d-flex justify-content-center mt-3">

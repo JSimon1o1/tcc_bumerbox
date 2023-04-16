@@ -19,6 +19,7 @@ Route::get('/logout', [Controllers\AutenticacaoController::class, 'logout'])->na
 Route::post('/autenticar', [Controllers\AutenticacaoController::class, 'autenticar'])->name('autenticar');
 
 Route::resource('home', Controllers\HomeController::class);
+Route::resource('clientes', Controllers\ClienteController::class);
 Route::resource('usuarios', Controllers\UsuarioController::class);
 Route::resource('conta', Controllers\ContaController::class);
 Route::resource('registro', Controllers\RegistroController::class);
