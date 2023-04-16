@@ -14,7 +14,7 @@ class StoreClienteRequest extends FormRequest
         return true;
     }
 
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
@@ -37,6 +37,7 @@ class StoreClienteRequest extends FormRequest
                 new CpfOuCnpj
             ],
             'cep' => 'required|digits:8',
+            'rua' => 'required|min:3|max:255',
             'data_nascimento' => 'nullable|date_format:Y-m-d',
             'telefone' => 'nullable|min:10|max:11',
             'senha' => [

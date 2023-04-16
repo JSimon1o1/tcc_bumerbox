@@ -17,7 +17,7 @@ class UpdateClienteRequest extends FormRequest
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
             'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
-            'telefone' => Str::replace(['(', ')', ' '], '', $this->get('telefone')),
+            'telefone' => Str::replace(['(', ')', '-', ' '], '', $this->get('telefone')),
             'rua' => $this->get('endereco'),
             'numero' => 0,
             'visivel' => $this->has('visivel'),
@@ -30,6 +30,7 @@ class UpdateClienteRequest extends FormRequest
         return [
             'nome' => 'required|min:3|max:255',
             'cpfcnpj' => 'required|min:11|max:18|unique:usuarios,cpfcnpj,' . $this->cliente->id . ',id',
+            'rua' => 'required|min:3|max:255',
             'data_nascimento' => 'nullable|date_format:Y-m-d',
             'telefone' => 'nullable|min:10|max:11',
             'cep' => 'required|digits:8',

@@ -20,7 +20,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $clientes = Usuario::select('*')
+        $clientes = Usuario::select('usuarios.*')
             ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
             ->orWhere('tipo_perfil_codigo', '=', 'CLT')
             ->where('visivel', true)
@@ -45,9 +45,17 @@ class ClienteController extends Controller
         try {
             DB::beginTransaction();
             $cliente = $cliente->create($request->all());
-            $cliente->enderecos()->create(['usuario_id' => $cliente->id, 'cidade_id' => 1]);
-            $cliente->perfis()->create(['usuario_id' => $cliente->id, 'tipo_perfil_codigo' => 'CLT']);
-            $cliente->telefones()->create(['usuario_id' => $cliente->id, 'numero' => $request->get('telefone')]);
+            $request->merge(['usuario_id', $cliente->id]);
+
+            $request->merge(['cidade_id' => 1]);
+            $cliente->enderecos()->create($request->all());
+
+            $request->merge(['tipo_perfil_codigo' => 'CLT']);
+            $cliente->perfis()->create($request->all());
+
+            $request->merge(['numero' => $request->get('telefone')]);
+            $cliente->telefones()->create($request->all());
+
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -83,25 +91,19 @@ class ClienteController extends Controller
             DB::beginTransaction();
             $cliente->update($request->all());
 
+            $request->merge(['usuario_id' => $cliente->id]);
+
+            $request->merge(['cidade_id' => 1]);
             if ($cliente->enderecos()->count()) {
-                $cliente->enderecos()->update(['cep' => $request->get('cep'), 'rua' => $request->get('rua')]);
+                $cliente->enderecos()->update($request->all(['usuario_id', 'cidade_id', 'rua', 'cep', 'numero']));
             } else {
-                Endereco::create([
-                    'usuario_id' => $cliente->id,
-                    'cep' => $request->get('cep'),
-                    'rua' => $request->get('rua'),
-                    'numero' => 0,
-                    'cidade_id' => 1,
-                ]);
+                Endereco::create($request->all());
             }
 
             if ($cliente->telefones()->count()) {
                 $cliente->telefones()->update(['numero' => $request->get('telefone')]);
             } else {
-                Telefone::create([
-                    'usuario_id' => $cliente->id,
-                    'numero' => $request->get('telefone')
-                ]);
+                Telefone::create($request->all());
             }
             DB::commit();
         } catch (Exception $e) {

@@ -81,6 +81,7 @@ class UsuarioController extends Controller
 
         try {
             DB::beginTransaction();
+            dd($request->all());
             $usuario->update($request->all());
             DB::commit();
         } catch (Exception $e) {
