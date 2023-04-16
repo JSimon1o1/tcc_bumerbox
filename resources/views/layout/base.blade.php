@@ -12,9 +12,10 @@
     <div class="row">
         @include('includes.menu')
         <main class="{{ Auth::check() ? 'col-md-10 ms-md-auto' : 'col-md-12' }}">
-            @component('componentes.identificacao') @endcomponent
+            @component('componentes.autenticacao.identificacao') @endcomponent
             @include('includes.titulopagina')
             @yield('conteudo')
+            @component('componentes.avisos.alertas') @endcomponent
             @include('includes.rodape')
         </main>
     </div>

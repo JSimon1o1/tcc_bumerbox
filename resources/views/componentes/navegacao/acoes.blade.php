@@ -10,8 +10,9 @@
     </form>
 @else
     @if($acao === 'create')
-        <a type="button" class="btn btn-sm btn-link" href="{{ route("$resource.index") }}">Listar</a>
+        <button type="button" class="btn btn-sm btn-link" href="{{ route("$resource.index") }}">Listar</button>
     @elseif($acao === 'index')
+        <a type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#filtros">Filtros</a>
         <a type="button" class="btn btn-sm btn-link" href="{{ route("$resource.create") }}">Novo</a>
     @elseif($acao === 'edit')
         <form method="post" action="{{ route("$resource.destroy", $id) }}">

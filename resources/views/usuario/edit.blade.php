@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-md-5 m-auto">
             <div class="d-flex justify-content-end">
-                @component('componentes.acoes', ['acao' => 'edit','resource' => 'usuarios','id' => $usuario->id])
+                @component('componentes.navegacao.acoes', ['acao' => 'edit','resource' => 'usuarios','id' => $usuario->id])
                 @endcomponent
             </div>
 
-            @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
+            @component('componentes.avisos.avisos', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
 
             <form action="{{ route('usuarios.update', $usuario->id) }}" method="post">
                 @csrf
@@ -19,13 +19,13 @@
                 </div>
                 <div>
                     <label for="data_nascimento" class="visually-hidden">Data de Nascimento</label>
-                    <input type="date" name="data_nascimento" id="data_nascimento"
-                           value="{{ $usuario->data_nascimento }}" placeholder="Data de Nascimento"/>
+                    <input type="text" name="data_nascimento" id="data_nascimento"
+                           data-type="date" value="{{ $usuario->data_nascimento }}" placeholder="Data de Nascimento"/>
                 </div>
                 <div>
                     <label for="cpfcnpj" class="visually-hidden">CPF/CNPJ</label>
-                    <input type="text" name="cpfcnpj" id="cpfcnpj" pattern="^[0-9\.\-\/]*" maxlength="18"
-                           placeholder="CPF/CNPJ" value="{{ $usuario->isCpfOrCnpj }}">
+                    <input type="text" name="cpfcnpj" id="cpfcnpj" data-type="cpfcnpj" placeholder="CPF/CNPJ"
+                           value="{{ $usuario->isCpfOrCnpj }}">
                 </div>
                 <div class="d-flex justify-content-center my-3">
                     <div class="form-check form-switch form-check-inline">

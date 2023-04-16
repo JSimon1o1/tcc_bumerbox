@@ -3,7 +3,7 @@
 @section('conteudo')
     <div class="row">
         <div class="col-md-4 m-auto">
-            @component('componentes.erros', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
+            @component('componentes.avisos.avisos', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
 
             <form action="{{ route('registro.store') }}" method="post">
                 @csrf
@@ -14,14 +14,14 @@
 
                 <div>
                     <label for="data_nascimento" class="visually-hidden">Data de Nascimento</label>
-                    <input type="date" name="data_nascimento" id="data_nascimento" value="{{ old('data_nascimento') }}"
-                           placeholder="Data de Nascimento"/>
+                    <input type="text" name="data_nascimento" id="data_nascimento" value="{{ old('data_nascimento') }}"
+                           data-type="date" placeholder="Data de Nascimento"/>
                 </div>
 
                 <div>
                     <label for="cpfcnpj" class="visually-hidden">CPF/CNPJ</label>
-                    <input type="text" name="cpfcnpj" id="cpfcnpj" value="{{ old('cpfcnpj') }}" pattern="^[0-9\.\-\/]*"
-                           maxlength="18" placeholder="CPF/CNPJ"/>
+                    <input type="text" name="cpfcnpj" id="cpfcnpj" value="{{ old('cpfcnpj') }}" data-type="cpfcnpj"
+                           placeholder="CPF/CNPJ"/>
                 </div>
 
                 <div>

@@ -5,7 +5,7 @@
                 <h6 class="menu-opcao d-flex">Cadastros</h6>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clientes</a>
+                    <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Fornecedores</a>
