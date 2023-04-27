@@ -22,6 +22,7 @@
                 <div>
                     <label for="confirmar_senha" class="visually-hidden">Senha</label>
                     <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar senha"/>
+                    <br><br><input type="checkbox" onclick="togglePasswordMinhaConta()">Mostrar a senha</input>
                 </div>
 
                 <div class="d-flex gap-2 justify-content-center mt-3">

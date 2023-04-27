@@ -61,7 +61,7 @@ class UsuarioController extends Controller
     {
         return view('usuario.show')
             ->withTitulo($usuario->nome)
-            ->withSubTitulo('Os dados do usuário selecioando serão exibidos abaixo!')
+            ->withSubTitulo('Os dados do usuário selecionado serão exibidos abaixo!')
             ->withUsuario($usuario);
     }
 

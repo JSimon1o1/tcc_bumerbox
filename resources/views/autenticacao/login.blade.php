@@ -15,7 +15,8 @@
                 </div>
                 <div>
                     <label class="visually-hidden" for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Senha"><br><br>
+                    <input type="password" id="senha" name="senha" placeholder="Senha">
+                    <input type="checkbox" onclick="togglePasswordLogin()">Mostrar a senha<br><br>
                 </div>
                 @component('componentes.avisos.avisos', ['errors' => $errors, 'textcolor' => 'danger']) @endcomponent
                 <div class="d-flex justify-content-center">
