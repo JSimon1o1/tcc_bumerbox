@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Fornecedor;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
-class UpdateUsuarioRequest extends FormRequest
+class UpdateFornecedorRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,8 +16,12 @@ class UpdateUsuarioRequest extends FormRequest
     {
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
-            'visivel' => $this->has('visivel'),
-            'fidelizado' => $this->has('fidelizado'),
+            'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
+            'telefone' => Str::replace(['(', ')', ' '], '', $this->get('telefone')),
+            'rua' => $this->get('endereco'),
+            'numero' => 0,
+            'nome' => $this->get('nomefantasia'),
+            'senha' => Str::random(8),
         ]);
     }
 
@@ -25,8 +29,11 @@ class UpdateUsuarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:3|max:255',
-            'cpfcnpj' => 'required|min:11|max:18|unique:usuarios,cpfcnpj,' . $this->usuario->id . ',id',
+            'cpfcnpj' => 'required|min:11|max:18|unique:usuarios,cpfcnpj,' . $this->fornecedore->id . ',id',
+            'rua' => 'required|min:3|max:255',
             'data_nascimento' => 'nullable|date_format:Y-m-d',
+            'telefone' => 'nullable|min:10|max:11',
+            'cep' => 'required|digits:8',
         ];
     }
 
@@ -35,10 +42,10 @@ class UpdateUsuarioRequest extends FormRequest
         return [
             'cpfcnpj' => 'O campo :attribute não é um :attribute válido',
             'cpfcnpj.unique' => 'O campo :attribute já possuí um registro',
-            'date_format' => 'O campo :attribute deve conter um valor válido',
             'required' => 'O campo :attribute deve ser preenchido',
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
+            'digits' => 'O campo :attribute deve possuir :digits dígitos',
         ];
     }
 }

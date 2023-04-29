@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRegistroRequest;
+use App\Http\Requests\Registro\StoreRegistroRequest;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\DB;

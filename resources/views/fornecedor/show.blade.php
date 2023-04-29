@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-5 m-auto">
             <div class="d-flex justify-content-end">
-                @component('componentes.navegacao.acoes', ['acao' => 'show', 'resource' => 'fornecedor', 'id' => $fornecedor->id])
+                @component('componentes.navegacao.acoes', ['acao' => 'show', 'resource' => 'fornecedores', 'id' => $fornecedor->id])
                 @endcomponent
             </div>
 

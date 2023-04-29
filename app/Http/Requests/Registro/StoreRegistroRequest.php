@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Registro;
 
 use App\Rules\CpfOuCnpj;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 
-class StoreClienteRequest extends FormRequest
+class StoreRegistroRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -18,12 +18,6 @@ class StoreClienteRequest extends FormRequest
     {
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
-            'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
-            'telefone' => Str::replace(['(', ')', ' '], '', $this->get('telefone')),
-            'rua' => $this->get('endereco'),
-            'numero' => 0,
-            'visivel' => $this->has('visivel'),
-            'fidelizado' => $this->has('fidelizado'),
         ]);
     }
 
@@ -36,10 +30,8 @@ class StoreClienteRequest extends FormRequest
                 'unique:usuarios,cpfcnpj,NULL,id',
                 new CpfOuCnpj
             ],
-            'cep' => 'required|digits:8',
-            'rua' => 'required|min:3|max:255',
             'data_nascimento' => 'nullable|date_format:Y-m-d',
-            'telefone' => 'nullable|min:10|max:11',
+            'confirmar_senha' => 'required|same:senha',
             'senha' => [
                 'required',
                 Password::min(8)
@@ -61,13 +53,14 @@ class StoreClienteRequest extends FormRequest
             'required' => 'O campo :attribute deve ser preenchido',
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
-            'digits' => 'O campo :attribute deve possuir :digits dígitos',
+            'confirmar_senha' => 'O campo :attribute deve corresponder à senha.',
             'senha' => [
-                "O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula",
+                'O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula',
                 "O campo :attribute deve conter pelo menos um símbolo.",
                 "O campo :attribute deve conter pelo menos um número.",
                 "O campo :attribute possuí uma :attribute fraca. Por favor, forneça uma :attribute mais forte."
             ],
+
         ];
     }
 }
