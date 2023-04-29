@@ -8,7 +8,7 @@
                     <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Fornecedores</a>
+                    <a class="nav-link" href="{{ route('fornecedores.index') }}">Fornecedores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Categoria</a>

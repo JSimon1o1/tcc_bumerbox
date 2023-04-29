@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Usuario;
 
-use App\Rules\CpfOuCnpj;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\Password;
 
-class StoreUsuarioRequest extends FormRequest
+class UpdateUsuarioRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -27,21 +25,8 @@ class StoreUsuarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:3|max:255',
-            'cpfcnpj' => [
-                'required',
-                'unique:usuarios,cpfcnpj,NULL,id',
-                new CpfOuCnpj
-            ],
+            'cpfcnpj' => 'required|min:11|max:18|unique:usuarios,cpfcnpj,' . $this->usuario->id . ',id',
             'data_nascimento' => 'nullable|date_format:Y-m-d',
-            'senha' => [
-                'required',
-                Password::min(8)
-                    ->mixedCase()
-                    ->letters()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised()
-            ]
         ];
     }
 
@@ -54,12 +39,6 @@ class StoreUsuarioRequest extends FormRequest
             'required' => 'O campo :attribute deve ser preenchido',
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
-            'senha' => [
-                "O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula",
-                "O campo :attribute deve conter pelo menos um símbolo.",
-                "O campo :attribute deve conter pelo menos um número.",
-                "O campo :attribute possuí uma :attribute fraca. Por favor, forneça uma :attribute mais forte."
-            ],
         ];
     }
 }

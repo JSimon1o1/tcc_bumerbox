@@ -1,13 +1,14 @@
 @extends('layout.base')
 
 @section('conteudo')
-    @component('componentes.formulario.cadastro', ['acao' => 'create', 'recurso' => 'fornecedor', 'errors' => $errors])
-        <form action="{{ route('fornecedor.store') }}" method="post">
+    @component('componentes.formulario.cadastro', ['acao' => 'create', 'recurso' => 'fornecedores', 'errors' => $errors])
+        <form action="{{ route('fornecedores.store') }}" method="post">
             @csrf
 
             <div>
                 <label for="nomefantasia" class="visually-hidden">Nome Fantasia</label>
-                <input type="text" name="nomefantasia" id="nomefantasia" value="{{ old('nome') }}" placeholder="Nome Fantasia"/>
+                <input type="text" name="nomefantasia" id="nomefantasia" value="{{ old('nomefantasia') }}"
+                       placeholder="Nome Fantasia"/>
             </div>
 
             <div>

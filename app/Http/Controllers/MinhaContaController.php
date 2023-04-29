@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMinhaContaRequest;
+use App\Http\Requests\MinhaConta\StoreMinhaContaRequest;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\DB;

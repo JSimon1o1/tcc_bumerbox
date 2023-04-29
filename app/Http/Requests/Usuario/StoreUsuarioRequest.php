@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Usuario;
 
 use App\Rules\CpfOuCnpj;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 
-class StoreRegistroRequest extends FormRequest
+class StoreUsuarioRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -18,6 +18,8 @@ class StoreRegistroRequest extends FormRequest
     {
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
+            'visivel' => $this->has('visivel'),
+            'fidelizado' => $this->has('fidelizado'),
         ]);
     }
 
@@ -31,7 +33,6 @@ class StoreRegistroRequest extends FormRequest
                 new CpfOuCnpj
             ],
             'data_nascimento' => 'nullable|date_format:Y-m-d',
-            'confirmar_senha' => 'required|same:senha',
             'senha' => [
                 'required',
                 Password::min(8)
@@ -53,14 +54,12 @@ class StoreRegistroRequest extends FormRequest
             'required' => 'O campo :attribute deve ser preenchido',
             'min' => 'O campo :attribute deve possuir pelo menos :min carateres',
             'max' => 'O campo :attribute deve possuir no máximo :max carateres',
-            'confirmar_senha' => 'O campo :attribute deve corresponder à senha.',
             'senha' => [
-                'O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula',
+                "O campo :attribute deve conter pelo menos uma letra maiúscula e uma minúscula",
                 "O campo :attribute deve conter pelo menos um símbolo.",
                 "O campo :attribute deve conter pelo menos um número.",
                 "O campo :attribute possuí uma :attribute fraca. Por favor, forneça uma :attribute mais forte."
             ],
-
         ];
     }
 }
