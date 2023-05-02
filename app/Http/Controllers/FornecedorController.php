@@ -123,6 +123,7 @@ class FornecedorController extends Controller
 
             $fornecedore->telefones()->delete();
             $fornecedore->enderecos()->delete();
+            $fornecedore->update(['cpfcnpj'=>null]);
             $fornecedore->delete();
 
             DB::commit();

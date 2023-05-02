@@ -14,7 +14,7 @@
             <div>
                 <label for="cpfcnpj" class="visually-hidden">CNPJ</label>
                 <input type="text" name="cpfcnpj" id="cpfcnpj" value="{{ old('cpfcnpj') }}" data-type="cpfcnpj"
-                       placeholder="CPF/CNPJ"/>
+                       placeholder="CNPJ"/>
             </div>
 
             <div>
