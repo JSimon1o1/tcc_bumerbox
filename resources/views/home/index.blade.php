@@ -6,32 +6,27 @@
         <div class="d-flex text-body-secondary pt-3 border-bottom">
             <p class="pb-3 mb-0 small lh-sm">
                 <strong class="d-block text-gray-dark">@sistema</strong>
-                Silvio Santos Ipsum O prêmio é em barras de ouro, que vale mais que dinheiroam. Estamos em ritmo de
-                festamm. É com você Lombardiam. Mah ooooee vem pra cá. Vem pra cá. Ma você está certo dissoam? Ha
-                haeeee. Hihi. Wellintaaammmmmmmmm.
+                Na nossa última atualização, criamos o cadastro dos Fornecedores.
+                Agora você pode incluir qualquer fornecedor para a parceria entre Bumerbox e seu estabelecimento. =D
             </p>
         </div>
         <div class="d-flex text-body-secondary pt-3 border-bottom">
             <p class="pb-3 mb-0 small lh-sm">
                 <strong class="d-block text-gray-dark">@administrador</strong>
-                Mussum Ipsum, cacilds vidis litro abertis. Delegadis gente finis, bibendum egestas augue arcu ut
-                est.Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis.Diuretics paradis
-                num copo é motivis de denguis.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+                Pensando em melhorias recorrentes, adicionamos uma opção de visualizar a senha digitada,
+                toast de sucesso e erro em cada operação e redirecionamento para a HOME quando clica no link. =D
             </p>
         </div>
         <div class="d-flex text-body-secondary pt-3">
             <p class="pb-3 mb-0 small lh-sm border-bottom">
                 <strong class="d-block text-gray-dark">@sistema</strong>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis imperdiet aliquet. Morbi
-                suscipit dolor scelerisque ultricies semper. Nullam id libero in eros varius aliquet a eu purus. Aliquam
-                nec placerat enim, vel congue tellus. Aenean tempus at justo et consequat. Pellentesque eu tortor
-                rutrum, vestibulum neque in, efficitur nisl. Suspendisse potenti. Etiam facilisis metus vel tellus
-                lacinia posuere. Fusce convallis tincidunt eros quis blandit. Donec gravida rutrum rhoncus. Ut et tortor
-                quis tellus egestas aliquet. Maecenas non enim a risus interdum rhoncus nec vitae sapien.
+                Na nossa próxima atualização, teremos o acesso dos menus conforme perfil de usuário,
+                criação das telas de cadastro das embalagens, exporte de relatórios e qualquer outra melhoria
+                que você pode sugerir pelo e-mail: atendimento@bumerbox.com.br.
             </p>
         </div>
         <small class="d-block text-end mt-3">
-            <a href="javascript:void(0);">Todas as atualizações</a>
+            <a href="{{ asset('/home') }}" class="btn btn-primary">Todas as atualizações</a>
         </small>
     </div>
 @endsection
