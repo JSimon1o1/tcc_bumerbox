@@ -17,7 +17,7 @@ class UpdateFornecedorRequest extends FormRequest
         $this->merge([
             'cpfcnpj' => Str::replace(['.', '-', '/'], '', $this->get('cpfcnpj')),
             'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
-            'telefone' => Str::replace(['(', ')', ' '], '', $this->get('telefone')),
+            'telefone' => Str::replace(['(', ')', ' ', '-'], '', $this->get('telefone')),
             'rua' => $this->get('endereco'),
             'numero' => 0,
             'nome' => $this->get('nomefantasia'),
