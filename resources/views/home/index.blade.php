@@ -26,7 +26,7 @@
             </p>
         </div>
         <small class="d-block text-end mt-3">
-            <a href="{{ asset('/home') }}" class="btn btn-primary">Todas as atualizações</a>
+            <a href="{{ asset('/home') }}" class="btn btn-success">Todas as atualizações</a>
         </small>
     </div>
 @endsection
